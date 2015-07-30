@@ -1,0 +1,6 @@
+puf_platform_homepage:
+    path:     /
+    defaults: { _controller: PUFPlatformBundle:Default:index }
+helloworld:
+    path: /helloworld 
+    defaults: { _controller: PUFPlatformBundle:Default: }

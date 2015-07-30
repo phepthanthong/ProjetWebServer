@@ -1,0 +1,4 @@
+services:
+#    puf_platform.example:
+#        class: PUF\PlatformBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
