@@ -4,3 +4,4 @@
 /app/logs/prod.log
 !app/logs/.gitkeep
 *.log
+/vendor/

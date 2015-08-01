@@ -16,11 +16,12 @@ include("signup.php");
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
   <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" /> 
   <!-- CSS -->
+  {% block style %}
   <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/style.css') }}">  
+  {% endblock %}
 </head>
 
-<body>
-  {% block menubar %}  
+<body>  
   <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,6 +36,7 @@ include("signup.php");
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
+      {% block menubar %}
       <div class="navbar-collapse collapse" id="navbar-collapsible">
         <ul class="nav navbar-nav navbar-left">
           <li><a href="#section1">Accueil</a></li>
@@ -47,9 +49,10 @@ include("signup.php");
 
         </ul>
       </div><!-- /.navbar-collapse -->
+      {% endblock %}
     </div>    
   </nav>
-  {% endblock %} <!-- endblock menubar -->
+   <!-- endblock menubar -->
 
   {% block section1 %}
   {% endblock %}

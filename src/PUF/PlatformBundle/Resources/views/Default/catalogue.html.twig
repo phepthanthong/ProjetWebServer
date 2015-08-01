@@ -1,1 +1,20 @@
 {% extends "PUFPlatformBundle::layout.html.twig" %}
+
+{% block style %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/catalogue.css') }}">  
+{% endblock %}
+
+{% block menubar %}
+<div class="navbar-collapse collapse" id="navbar-collapsible">
+	<ul class="nav navbar-nav navbar-left">
+		<li><a href="{{ path('puf_platform_homepage') }}">Accueil</a></li>
+		<li><a href="#">Recherche</a></li>
+		
+	</ul>       
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="#" data-toggle="modal" data-target="#sigupModal">S'inscrire</a></li>
+		<li><a href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
+
+	</ul>
+</div><!-- /.navbar-collapse -->
+{% endblock %}
