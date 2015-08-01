@@ -3,3 +3,4 @@
 /app/logs/dev.log
 /app/logs/prod.log
 !app/logs/.gitkeep
+*.log
