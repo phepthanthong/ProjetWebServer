@@ -22,9 +22,7 @@ class Disque
     private $codeDisque;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Album", type="integer")
+     * @var \Album
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Album")
      * @ORM\JoinColumns({

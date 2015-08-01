@@ -22,9 +22,7 @@ class Composition_Oeuvre
     private $codeComposerOeuvre;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Oeuvre", type="integer")
+     * @var \Oeuvre
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Oeuvre")
      * @ORM\JoinColumns({
@@ -34,9 +32,7 @@ class Composition_Oeuvre
     private $codeOeuvre;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Composition", type="integer")
+     * @var \Composition
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Composition")
      * @ORM\JoinColumns({

@@ -36,9 +36,7 @@ class Album
     private $anneeAlbum;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Genre", type="integer")
+     * @var \Genre
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Genre")
      * @ORM\JoinColumns({
@@ -48,9 +46,7 @@ class Album
     private $codeGenre;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Editeur", type="integer")
+     * @var \Editeur
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Editeur")
      * @ORM\JoinColumns({

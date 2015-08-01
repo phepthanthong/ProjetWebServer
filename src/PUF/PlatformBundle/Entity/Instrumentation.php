@@ -22,9 +22,7 @@ class Instrumentation
     private $codeInstrumentation;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Oeuvre", type="integer")
+     * @var \Oeuvre
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Oeuvre")
      * @ORM\JoinColumns({
@@ -34,9 +32,7 @@ class Instrumentation
     private $codeOeuvre;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Instrument", type="integer")
+     * @var \Instrument
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Instrument")
      * @ORM\JoinColumns({

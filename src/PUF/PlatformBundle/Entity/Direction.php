@@ -22,9 +22,7 @@ class Direction
     private $codeDirection;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Musicien", type="integer")
+     * @var \Musicien
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Musicien")
      * @ORM\JoinColumns({
@@ -34,9 +32,7 @@ class Direction
     private $codeMusicien;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Morceau", type="integer")
+     * @var \Enregistrement
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
@@ -46,9 +42,7 @@ class Direction
     private $codeMorceau;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Orchestre", type="integer")
+     * @var \Orchestre
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Orchestre")
      * @ORM\JoinColumns({

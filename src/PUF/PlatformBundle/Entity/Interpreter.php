@@ -22,9 +22,7 @@ class Interpreter
     private $codeInterpreter;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Morceau", type="integer")
+     * @var \Enregistrement
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
@@ -34,9 +32,7 @@ class Interpreter
     private $codeMorceau;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Musicien", type="integer")
+     * @var \Musicien
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Musicien")
      * @ORM\JoinColumns({

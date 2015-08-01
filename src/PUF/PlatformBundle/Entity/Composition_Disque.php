@@ -22,9 +22,7 @@ class Composition_Disque
     private $codeContenir;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Disque", type="integer")
+     * @var \Disque
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Disque")
      * @ORM\JoinColumns({
@@ -34,9 +32,7 @@ class Composition_Disque
     private $codeDisque;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Morceau", type="integer")
+     * @var \Enregitrement
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
