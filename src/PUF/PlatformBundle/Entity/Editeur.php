@@ -29,9 +29,7 @@ class Editeur
     private $nomEditeur;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Pays", type="integer")
+     * @var \Pays
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Pays")
      * @ORM\JoinColumns({

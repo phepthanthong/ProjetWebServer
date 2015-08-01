@@ -22,9 +22,7 @@ class Achat
     private $codeAchat;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Enregistrement", type="integer")
+     * @var \Enregistrement
      *
      * @ORM\OneToOne(targetEntity="src\AppBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
@@ -34,9 +32,7 @@ class Achat
     private $codeEnregistrement;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Abonne", type="integer")
+     * @var \Abonne
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Abonne")
      * @ORM\JoinColumns({

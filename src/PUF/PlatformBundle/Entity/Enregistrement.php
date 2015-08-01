@@ -29,9 +29,7 @@ class Enregistrement
     private $titre;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Composition", type="integer")
+     * @var \Composition
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Composition")
      * @ORM\JoinColumns({

@@ -50,9 +50,7 @@ class Musicien
     private $anneeMort;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Pays", type="integer")
+     * @var \Pays
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Pays")
      * @ORM\JoinColumns({
@@ -62,9 +60,7 @@ class Musicien
     private $codePays;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Genre", type="integer")
+     * @var \Genre
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Genre")
      * @ORM\JoinColumns({
@@ -74,9 +70,7 @@ class Musicien
     private $codeGenre;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Code_Instrument", type="integer")
+     * @var \Instrument
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Instrument")
      * @ORM\JoinColumns({

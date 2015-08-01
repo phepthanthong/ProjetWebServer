@@ -50,9 +50,7 @@ class Oeuvre
     private $codeType;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="Annee", type="integer")
+     * @var \Type_Morceaux
      *
      * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Type_Morceaux")
      * @ORM\JoinColumns({
