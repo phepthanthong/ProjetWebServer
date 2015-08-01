@@ -1,61 +1,12 @@
-<?php 
-//include("login.php");
-include("signup.php");
- ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Projet Web Server - Musique Classique</title>
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" /> 
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="./bundles/framework/css/style.css">
-</head>
-
-<body>  
-  <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand text-danger" href="#">MUSIQUE CLASSIQUE</a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="navbar-collapse collapse" id="navbar-collapsible">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="#section1">Accueil</a></li>
-          <li><a href="#section2">Description</a></li>
-          <li><a href="#section3">A Propos</a></li>
-        </ul>       
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" data-toggle="modal" data-target="#sigupModal">S'inscrire</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
-
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div>    
-  </nav>
-
+{% extends "PUFPlatformBundle::layout.html.twig" %}
+{% block section1 %}
   <section class="container-fluid" id="section1">
     <div class="v-center">
       <h1 class="text-center">Soyez prêt</h1>
       <h2 class="text-center lato animate slideInDown">et laisser la musique <b>vous détendre</b></h2>
       <p class="text-center">
         <br>
-        <a href="catalogue.html" class="btn btn-danger btn-lg btn-huge lato">Voir Notre Catalogue</a>
+        <a href="{{ path('catalogue_route') }}" class="btn btn-danger btn-lg btn-huge lato">Voir Notre Catalogue</a>
       </p>
     </div>
     <a href="#section2">
@@ -66,7 +17,9 @@ include("signup.php");
       </div>
     </a>
   </section>
+{% endblock %}
 
+{% block section2 %}
   <section class="container-fluid" id="section2">
     <h1 class="text-center">Notre projet web côté server</h1>
     <div class="row">
@@ -94,57 +47,59 @@ include("signup.php");
       </div>
     </a>
   </section>
+{% endblock %}
 
-  <section class="container-fluid" id="section3">
-    <div class="container v-center">
-      <div class="row">
-        <div class="col-sm-6">
+{% block section3 %}
+<section class="container-fluid" id="section3">
+  <div class="container v-center">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <div class="panel panel-default slideInLeft animate">
+              <div class="panel-heading">
+                <h3>DOAN Ngoc Long</h3></div>
+                <div class="panel-body">
+                  <h4>Programmer le back-office du site</h4>
+                  <hr>LINF13 - PUFHCM
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 text-center">
           <div class="row">
             <div class="col-sm-12 text-center">
-              <div class="panel panel-default slideInLeft animate">
+              <div class="panel panel-default slideInUp animate">
                 <div class="panel-heading">
-                  <h3>DOAN Ngoc Long</h3></div>
+                  <h3>MAI Trung Hieu</h3></div>
                   <div class="panel-body">
-                    <h4>Programmer le back-office du site</h4>
+                    <h4>Concevoir le font-office du site</h4>
                     <hr>LINF13 - PUFHCM
                     <hr>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6 text-center">
-            <div class="row">
-              <div class="col-sm-12 text-center">
-                <div class="panel panel-default slideInUp animate">
-                  <div class="panel-heading">
-                    <h3>MAI Trung Hieu</h3></div>
-                    <div class="panel-body">
-                      <h4>Concevoir le font-office du site</h4>
-                      <hr>LINF13 - PUFHCM
-                      <hr>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>            
-          </div>
-          <!--/row-->
-          <div class="row">
-            <br>
-          </div>
+          </div>            
         </div>
-        <!--/container-->
-      </section>
+        <!--/row-->
+        <div class="row">
+          <br>
+        </div>
+      </div>
+      <!--/container-->
+    </section>
+{% endblock %}
 
-
-
-
+{% block scroll-up %}
   <div class="scroll-up">
     <a href="#"><i class="fa fa-angle-up"></i></a>
   </div>
+{% endblock %}
 
-  <!--login modal-->
+{% block loginModal %}
   <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -176,7 +131,9 @@ include("signup.php");
       </div>
     </div>
   </div>
+{% endblock %}
 
+{% block signupModal %}
   <div class="modal fade" id="sigupModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -220,13 +177,4 @@ include("signup.php");
       </div>
     </div>
   </div>
-
-
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="./bundles/framework/js/script.js"></script>
-</body>
-</html>
+{% endblock %}

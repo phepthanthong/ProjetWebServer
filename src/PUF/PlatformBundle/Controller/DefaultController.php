@@ -13,9 +13,9 @@ class DefaultController extends Controller
         return $this->render('PUFPlatformBundle:Default:index.html.twig', array());
     }
 
-    public function helloAction()
+    public function showcatalogueAction()
     {
-    	return $this->render('PUFPlatformBundle:Default:hello.html.twig', array());
+        return $this->render('PUFPlatformBundle:Default:catalogue.html.twig', array());
     }
     
     public function createAction()
