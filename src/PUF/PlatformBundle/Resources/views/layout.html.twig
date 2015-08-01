@@ -4,24 +4,21 @@ include("signup.php");
  ?>
 <!DOCTYPE html>
 <html lang="en">
-{% block head %}
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>{% block title %}Projet Web Server - Musique Classique{% endblock %}</title>
-
   
   <!-- Bootstrap -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
   <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" /> 
   <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="./bundles/framework/css/style.css">
-  
+  <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/style.css') }}">  
 </head>
-{% block head %}
+
 <body>
   {% block menubar %}  
   <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
@@ -52,190 +49,30 @@ include("signup.php");
       </div><!-- /.navbar-collapse -->
     </div>    
   </nav>
+  {% endblock %} <!-- endblock menubar -->
+
+  {% block section1 %}
   {% endblock %}
 
-  <section class="container-fluid" id="section1">
-    <div class="v-center">
-      <h1 class="text-center">Soyez prêt</h1>
-      <h2 class="text-center lato animate slideInDown">et laisser la musique <b>vous détendre</b></h2>
-      <p class="text-center">
-        <br>
-        <a href="catalogue.html" class="btn btn-danger btn-lg btn-huge lato">Voir Notre Catalogue</a>
-      </p>
-    </div>
-    <a href="#section2">
-      <div class="scroll-down bounceInDown animated">
-        <span>
-          <i class="fa fa-angle-down fa-2x"></i>
-        </span>
-      </div>
-    </a>
-  </section>
+  {% block section2 %}
+  {% endblock %}
 
-  <section class="container-fluid" id="section2">
-    <h1 class="text-center">Notre projet web côté server</h1>
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <h3 class="text-center lato slideInUp animate">Professeur: <strong>M.Patrick FELIX</strong></h3>
-        <h3 class="text-center lato slideInUp animate">Chargé de TD: <strong>M.The Nhan LUONG</strong></h3>
-        <br>
-        <div class="row">
-          <div class="col-xs-4 col-xs-offset-1"><h4>Ce site est le résultat de notre projet du cours Programmation Web Server. Le travail a terminé le 08/08/2015.</h4></div>
-          <div class="col-xs-2"></div>
-          <div class="col-xs-4 text-right"><h4>Le site est développé sous forme d'un site de commerce en ligne qui vous présente un catalogue des albums de la musique classique disponible.</h4></div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1"><h4 class="text-center">Nous sommes deux personnes par groupe.<br> Une personne s'occupe la conception des pages HTML et l'autre assume la communication avec la Base de données.</h4></div>
-        </div>
+  {% block section3 %}
+  {% endblock %}
 
-      </div>
-    </div>
-    <a href="#section3">
-      <div class="scroll-down bounceInDown animated">
-        <span>
-          <i class="fa fa-angle-down fa-2x"></i>
-        </span>
-      </div>
-    </a>
-  </section>
-
-  <section class="container-fluid" id="section3">
-    <div class="container v-center">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-12 text-center">
-              <div class="panel panel-default slideInLeft animate">
-                <div class="panel-heading">
-                  <h3>DOAN Ngoc Long</h3></div>
-                  <div class="panel-body">
-                    <h4>Programmer le back-office du site</h4>
-                    <hr>LINF13 - PUFHCM
-                    <hr>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 text-center">
-            <div class="row">
-              <div class="col-sm-12 text-center">
-                <div class="panel panel-default slideInUp animate">
-                  <div class="panel-heading">
-                    <h3>MAI Trung Hieu</h3></div>
-                    <div class="panel-body">
-                      <h4>Concevoir le font-office du site</h4>
-                      <hr>LINF13 - PUFHCM
-                      <hr>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>            
-          </div>
-          <!--/row-->
-          <div class="row">
-            <br>
-          </div>
-        </div>
-        <!--/container-->
-      </section>
-
-
-
-
-  <div class="scroll-up">
-    <a href="#"><i class="fa fa-angle-up"></i></a>
-  </div>
+  {% block scrollup %}
+  {% endblock %}  
   
-  {% block loginModal %}
-  <!--login modal-->
-  <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h1 class="text-center">Connexion</h1>
-        </div>
-        <div class="modal-body">
-          <h5 class="text-center">COMPLÉTER LES CHAMPS SUIVANTS POUR CONNECTER</h5>
-          <form class="form col-md-12 center-block">
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Nom d'utilisateur">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Mot de passe">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block" id="btn_login" name="btn_login">Connecter</button>
-              <span class="pull-right"><a href="#">S'inscire</a></span><span><a href="#">Besoin d'aide?</a></span>
-              
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <div class="col-md-12">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-          </div>  
-        </div>
-      </div>
-    </div>
-  </div>
+  {% block loginModal %}  
   {% endblock %}
 
-  {% block sigupModal %}
-  <div class="modal fade" id="sigupModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h2 class="text-center">Inscription</h2>
-        </div>
-        <div class="modal-body">
-          <form role="form" method="post">
-            <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk">&nbsp;</span>Champs obligatoires</strong></div>
-          <div class="form-group">
-            <label for="InputName">Votre nom</label>
-            <div class="input-group">
-              <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Entrez votre nom" required>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="InputPassword">Votre mot de passe</label>
-            <div class="input-group">
-              <input type="text" class="form-control" name="InputPassword" id="InputPassword"  placeholder="Entrez votre mot de passe" required>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-            </div>
-          </div>
-          <span><?php echo $error; ?></span>
-          
-          <!-- <div class="form-group">
-            <label for="InputEmail">Confirm Email</label>
-            <div class="input-group">
-              <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-            </div>
-          </div>   -->
-          </form>
-                  
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-          <button type="submit" class="btn btn-primary" id="btn_signup" name="btn_signup">Je m'inscris</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% block sigupModal %}  
   {% endblock %}
 
-  {% block scripts %}
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="./bundles/framework/js/script.js"></script>
-  {% endblock %}
+  <script type="text/javascript" src="{{ asset('bundles/framework/js/script.js') }}"></script>
 </body>
 </html>

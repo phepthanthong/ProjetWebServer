@@ -1,12 +1,12 @@
 puf_platform_homepage:
     path:     /
     defaults: { _controller: PUFPlatformBundle:Default:index }
-helloworld:
-    path: 	  /helloworld 
-    defaults: { _controller: PUFPlatformBundle:Default: }
 add_pays:
     path:     /add-pays
     defaults: { _controller: PUFPlatformBundle:Default:create }
 selecting:
     path:     /show
     defaults: { _controller: PUFPlatformBundle:Default:select }
+catalogue_route:
+    path: /catalogue
+    defaults: {_controller: PUFPlatformBundle:Default:showcatalogue}
