@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Enregistrement.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Enregistrement
  *
- * @ORM\Table()
+ * @ORM\Table(name="Enregistrement")
  * @ORM\Entity
  */
 class Enregistrement
@@ -15,69 +16,69 @@ class Enregistrement
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Morceau", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeMorceau;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Titre", type="string", length=100)
+     * @ORM\Column(name="Titre", type="string", length=0, nullable=false)
      */
     private $titre;
 
     /**
-     * @var \Composition
-     *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Composition")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Composition", referencedColumnName="Code_Composition")
-     * })
-     */
-    private $codeComposition;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="Nom_de_Fichier", type="string", length=100)
+     * @ORM\Column(name="Nom_de_Fichier", type="string", length=0, nullable=false)
      */
     private $nomDeFichier;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="Duree", type="integer")
+     * @ORM\Column(name="Durée", type="string", length=10, nullable=true)
      */
     private $duree;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="Duree_Seconds", type="integer")
+     * @ORM\Column(name="Durée_Seconde", type="integer", nullable=true)
      */
-    private $dureeSeconds;
+    private $dureeSeconde;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="Prix", type="integer")
+     * @ORM\Column(name="Prix", type="integer", nullable=true)
      */
     private $prix;
 
     /**
-     * @var string
+     * @var binary
      *
-     * @ORM\Column(name="Extrait", type="string", length=255)
+     * @ORM\Column(name="Extrait", type="blob", nullable=true)
      */
     private $extrait;
 
+    /**
+     * @var \Composition
+     *
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Composition")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Code_Composition", referencedColumnName="Code_Composition")
+     * })
+     */
+    private $composition;
+
 
     /**
-     * Get id
+     * Get codeMorceau
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeMorceau()
     {
@@ -88,6 +89,7 @@ class Enregistrement
      * Set titre
      *
      * @param string $titre
+     *
      * @return Enregistrement
      */
     public function setTitre($titre)
@@ -100,7 +102,7 @@ class Enregistrement
     /**
      * Get titre
      *
-     * @return string 
+     * @return string
      */
     public function getTitre()
     {
@@ -108,32 +110,10 @@ class Enregistrement
     }
 
     /**
-     * Set codeComposition
-     *
-     * @param integer $codeComposition
-     * @return Enregistrement
-     */
-    public function setCodeComposition($codeComposition)
-    {
-        $this->codeComposition = $codeComposition;
-
-        return $this;
-    }
-
-    /**
-     * Get codeComposition
-     *
-     * @return integer 
-     */
-    public function getCodeComposition()
-    {
-        return $this->codeComposition;
-    }
-
-    /**
      * Set nomDeFichier
      *
      * @param string $nomDeFichier
+     *
      * @return Enregistrement
      */
     public function setNomDeFichier($nomDeFichier)
@@ -146,7 +126,7 @@ class Enregistrement
     /**
      * Get nomDeFichier
      *
-     * @return string 
+     * @return string
      */
     public function getNomDeFichier()
     {
@@ -156,7 +136,8 @@ class Enregistrement
     /**
      * Set duree
      *
-     * @param integer $duree
+     * @param string $duree
+     *
      * @return Enregistrement
      */
     public function setDuree($duree)
@@ -169,7 +150,7 @@ class Enregistrement
     /**
      * Get duree
      *
-     * @return integer 
+     * @return string
      */
     public function getDuree()
     {
@@ -177,32 +158,34 @@ class Enregistrement
     }
 
     /**
-     * Set dureeSeconds
+     * Set dureeSeconde
      *
-     * @param integer $dureeSeconds
+     * @param integer $dureeSeconde
+     *
      * @return Enregistrement
      */
-    public function setDureeSeconds($dureeSeconds)
+    public function setDureeSeconde($dureeSeconde)
     {
-        $this->dureeSeconds = $dureeSeconds;
+        $this->dureeSeconde = $dureeSeconde;
 
         return $this;
     }
 
     /**
-     * Get dureeSeconds
+     * Get dureeSeconde
      *
-     * @return integer 
+     * @return integer
      */
-    public function getDureeSeconds()
+    public function getDureeSeconde()
     {
-        return $this->dureeSeconds;
+        return $this->dureeSeconde;
     }
 
     /**
      * Set prix
      *
      * @param integer $prix
+     *
      * @return Enregistrement
      */
     public function setPrix($prix)
@@ -215,7 +198,7 @@ class Enregistrement
     /**
      * Get prix
      *
-     * @return integer 
+     * @return integer
      */
     public function getPrix()
     {
@@ -225,7 +208,8 @@ class Enregistrement
     /**
      * Set extrait
      *
-     * @param string $extrait
+     * @param binary $extrait
+     *
      * @return Enregistrement
      */
     public function setExtrait($extrait)
@@ -238,10 +222,34 @@ class Enregistrement
     /**
      * Get extrait
      *
-     * @return string 
+     * @return binary
      */
     public function getExtrait()
     {
         return $this->extrait;
+    }
+
+    /**
+     * Set composition
+     *
+     * @param \Composition $composition
+     *
+     * @return Enregistrement
+     */
+    public function setComposition(\Composition $composition = null)
+    {
+        $this->composition = $composition;
+
+        return $this;
+    }
+
+    /**
+     * Get composition
+     *
+     * @return \Composition
+     */
+    public function getComposition()
+    {
+        return $this->composition;
     }
 }

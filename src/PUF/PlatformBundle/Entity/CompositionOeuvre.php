@@ -1,26 +1,26 @@
 <?php
-// src/PUF/PlatformBundle/Entity/Instrumentation.php
+// src/PUF/PlatformBundle/Entity/CompositionOeuvre.php
 
 namespace PUF\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Instrumentation
+ * CompositionOeuvre
  *
- * @ORM\Table(name="Instrumentation")
+ * @ORM\Table(name="Composition_Oeuvre")
  * @ORM\Entity
  */
-class Instrumentation
+class CompositionOeuvre
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="Code_Instrumentation", type="integer", nullable=false)
+     * @ORM\Column(name="Code_Composer_Oeuvre", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $codeInstrumentation;
+    private $codeComposerOeuvre;
 
     /**
      * @var \Oeuvre
@@ -33,24 +33,24 @@ class Instrumentation
     private $oeuvre;
 
     /**
-     * @var \Instrument
+     * @var \Composition
      *
-     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Instrument")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Composition")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Instrument", referencedColumnName="Code_Instrument")
+     *   @ORM\JoinColumn(name="Code_Composition", referencedColumnName="Code_Composition")
      * })
      */
-    private $instrument;
+    private $composition;
 
 
     /**
-     * Get codeInstrumentation
+     * Get codeComposerOeuvre
      *
      * @return integer
      */
-    public function getCodeInstrumentation()
+    public function getCodeComposerOeuvre()
     {
-        return $this->codeInstrumentation;
+        return $this->codeComposerOeuvre;
     }
 
     /**
@@ -58,7 +58,7 @@ class Instrumentation
      *
      * @param \Oeuvre $oeuvre
      *
-     * @return Instrumentation
+     * @return CompositionOeuvre
      */
     public function setOeuvre(\Oeuvre $oeuvre = null)
     {
@@ -78,26 +78,26 @@ class Instrumentation
     }
 
     /**
-     * Set instrument
+     * Set composition
      *
-     * @param \Instrument $instrument
+     * @param \Composition $composition
      *
-     * @return Instrumentation
+     * @return CompositionOeuvre
      */
-    public function setInstrument(\Instrument $instrument = null)
+    public function setComposition(\Composition $composition = null)
     {
-        $this->instrument = $instrument;
+        $this->composition = $composition;
 
         return $this;
     }
 
     /**
-     * Get instrument
+     * Get composition
      *
-     * @return \Instrument
+     * @return \Composition
      */
-    public function getInstrument()
+    public function getComposition()
     {
-        return $this->instrument;
+        return $this->composition;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Genre.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Genre
  *
- * @ORM\Table()
+ * @ORM\Table(name="Genre")
  * @ORM\Entity
  */
 class Genre
@@ -15,24 +16,24 @@ class Genre
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Genre", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeGenre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Libelle_Abrege", type="string", length=100)
+     * @ORM\Column(name="Libellé_Abrégé", type="string", length=30, nullable=false)
      */
     private $libelleAbrege;
 
 
     /**
-     * Get id
+     * Get codeGenre
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeGenre()
     {
@@ -43,6 +44,7 @@ class Genre
      * Set libelleAbrege
      *
      * @param string $libelleAbrege
+     *
      * @return Genre
      */
     public function setLibelleAbrege($libelleAbrege)
@@ -55,7 +57,7 @@ class Genre
     /**
      * Get libelleAbrege
      *
-     * @return string 
+     * @return string
      */
     public function getLibelleAbrege()
     {

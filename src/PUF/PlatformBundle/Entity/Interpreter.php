@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Interpreter.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Interpreter
  *
- * @ORM\Table()
+ * @ORM\Table(name="Interpréter")
  * @ORM\Entity
  */
 class Interpreter
@@ -15,116 +16,122 @@ class Interpreter
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Interpréter", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeInterpreter;
 
-    /**
+	/**
      * @var \Enregistrement
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Enregistrement")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Morceau", referencedColumnName="Code_Morceau")
      * })
      */
-    private $codeMorceau;
-
+    private $morceau;
+	
     /**
      * @var \Musicien
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Musicien")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Musicien")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Musicien", referencedColumnName="Code_Musicien")
      * })
      */
-    private $codeMusicien;
+    private $musicien;
 
     /**
-     * @var integer
+     * @var \Instrument
      *
-     * @ORM\Column(name="Code_Instrument", type="integer")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Instrument")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Code_Instrument", referencedColumnName="Code_Instrument")
+     * })
      */
-    private $codeInstrument;
+    private $instrument;
 
 
     /**
-     * Get id
+     * Get codeInterpreter
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeInterpreter()
     {
         return $this->codeInterpreter;
     }
-
-    /**
-     * Set codeMorceau
+	
+	/**
+     * Set morceau
      *
-     * @param integer $codeMorceau
+     * @param \Enregistrement $morceau
+     *
      * @return Interpreter
      */
-    public function setCodeMorceau($codeMorceau)
+    public function setMorceau(\Enregistrement $morceau = null)
     {
-        $this->codeMorceau = $codeMorceau;
+        $this->morceau = $morceau;
 
         return $this;
     }
 
     /**
-     * Get codeMorceau
+     * Get morceau
      *
-     * @return integer 
+     * @return \Enregistrement
      */
-    public function getCodeMorceau()
+    public function getMorceau()
     {
-        return $this->codeMorceau;
+        return $this->morceau;
     }
 
     /**
-     * Set codeMusicien
+     * Set musicien
      *
-     * @param integer $codeMusicien
+     * @param \Musicien $musicien
+     *
      * @return Interpreter
      */
-    public function setCodeMusicien($codeMusicien)
+    public function setMusicien(\Musicien $musicien = null)
     {
-        $this->codeMusicien = $codeMusicien;
+        $this->musicien = $musicien;
 
         return $this;
     }
 
     /**
-     * Get codeMusicien
+     * Get musicien
      *
-     * @return integer 
+     * @return \Musicien
      */
-    public function getCodeMusicien()
+    public function getMusicien()
     {
-        return $this->codeMusicien;
+        return $this->musicien;
     }
 
     /**
-     * Set codeInstrument
+     * Set instrument
      *
-     * @param integer $codeInstrument
+     * @param \Instrument $instrument
+     *
      * @return Interpreter
      */
-    public function setCodeInstrument($codeInstrument)
+    public function setInstrument(\Instrument $instrument = null)
     {
-        $this->codeInstrument = $codeInstrument;
+        $this->instrument = $instrument;
 
         return $this;
     }
 
     /**
-     * Get codeInstrument
+     * Get instrument
      *
-     * @return integer 
+     * @return \Instrument
      */
-    public function getCodeInstrument()
+    public function getInstrument()
     {
-        return $this->codeInstrument;
+        return $this->instrument;
     }
 }

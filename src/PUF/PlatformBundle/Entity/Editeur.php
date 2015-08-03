@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Editeur.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Editeur
  *
- * @ORM\Table()
+ * @ORM\Table(name="Editeur")
  * @ORM\Entity
  */
 class Editeur
@@ -15,34 +16,34 @@ class Editeur
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Editeur", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeEditeur;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_Editeur", type="string", length=100)
+     * @ORM\Column(name="Nom_Editeur", type="string", length=50, nullable=false)
      */
     private $nomEditeur;
 
     /**
      * @var \Pays
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Pays")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Pays")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Pays", referencedColumnName="Code_Pays")
      * })
      */
-    private $codePays;
+    private $pays;
 
 
     /**
-     * Get id
+     * Get codeEditeur
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeEditeur()
     {
@@ -53,6 +54,7 @@ class Editeur
      * Set nomEditeur
      *
      * @param string $nomEditeur
+     *
      * @return Editeur
      */
     public function setNomEditeur($nomEditeur)
@@ -65,7 +67,7 @@ class Editeur
     /**
      * Get nomEditeur
      *
-     * @return string 
+     * @return string
      */
     public function getNomEditeur()
     {
@@ -73,25 +75,26 @@ class Editeur
     }
 
     /**
-     * Set codePays
+     * Set pays
      *
-     * @param integer $codePays
+     * @param \Pays $pays
+     *
      * @return Editeur
      */
-    public function setCodePays($codePays)
+    public function setPays(\Pays $pays = null)
     {
-        $this->codePays = $codePays;
+        $this->pays = $pays;
 
         return $this;
     }
 
     /**
-     * Get codePays
+     * Get pays
      *
-     * @return integer 
+     * @return \Pays
      */
-    public function getCodePays()
+    public function getPays()
     {
-        return $this->codePays;
+        return $this->pays;
     }
 }

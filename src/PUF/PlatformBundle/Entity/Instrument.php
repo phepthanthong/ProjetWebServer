@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Instrument.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Instrument
  *
- * @ORM\Table()
+ * @ORM\Table(name="Instrument")
  * @ORM\Entity
  */
 class Instrument
@@ -15,31 +16,31 @@ class Instrument
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Instrument", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeInstrument;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_Instrument", type="string", length=100)
+     * @ORM\Column(name="Nom_Instrument", type="string", length=50, nullable=false)
      */
     private $nomInstrument;
 
     /**
-     * @var string
+     * @var binary
      *
-     * @ORM\Column(name="Image", type="string", length=255)
+     * @ORM\Column(name="Image", type="blob", nullable=true)
      */
     private $image;
 
 
     /**
-     * Get id
+     * Get codeInstrument
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeInstrument()
     {
@@ -50,6 +51,7 @@ class Instrument
      * Set nomInstrument
      *
      * @param string $nomInstrument
+     *
      * @return Instrument
      */
     public function setNomInstrument($nomInstrument)
@@ -62,7 +64,7 @@ class Instrument
     /**
      * Get nomInstrument
      *
-     * @return string 
+     * @return string
      */
     public function getNomInstrument()
     {
@@ -72,7 +74,8 @@ class Instrument
     /**
      * Set image
      *
-     * @param string $image
+     * @param binary $image
+     *
      * @return Instrument
      */
     public function setImage($image)
@@ -85,7 +88,7 @@ class Instrument
     /**
      * Get image
      *
-     * @return string 
+     * @return binary
      */
     public function getImage()
     {

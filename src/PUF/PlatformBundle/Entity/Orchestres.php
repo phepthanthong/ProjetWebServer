@@ -1,38 +1,39 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Orchestres.php
 
 namespace PUF\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Orchestre
+ * Orchestres
  *
- * @ORM\Table()
+ * @ORM\Table(name="Orchestres")
  * @ORM\Entity
  */
-class Orchestre
+class Orchestres
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Orchestre", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeOrchestre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_Orchestre", type="string", length=100)
+     * @ORM\Column(name="Nom_Orchestre", type="string", length=150, nullable=false)
      */
     private $nomOrchestre;
 
 
     /**
-     * Get id
+     * Get codeOrchestre
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeOrchestre()
     {
@@ -43,7 +44,8 @@ class Orchestre
      * Set nomOrchestre
      *
      * @param string $nomOrchestre
-     * @return Orchestre
+     *
+     * @return Orchestres
      */
     public function setNomOrchestre($nomOrchestre)
     {
@@ -55,7 +57,7 @@ class Orchestre
     /**
      * Get nomOrchestre
      *
-     * @return string 
+     * @return string
      */
     public function getNomOrchestre()
     {

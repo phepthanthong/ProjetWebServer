@@ -1,45 +1,46 @@
 <?php
+// src/PUF/PlatformBundle/Entity/TypeMorceaux.php
 
 namespace PUF\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Type_Morceaux
+ * TypeMorceaux
  *
- * @ORM\Table()
+ * @ORM\Table(name="Type_Morceaux")
  * @ORM\Entity
  */
-class Type_Morceaux
+class TypeMorceaux
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Type", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeType;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Libelle_Type", type="string", length=100)
+     * @ORM\Column(name="Libellé_Type", type="string", length=20, nullable=false)
      */
     private $libelleType;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="string", length=255)
+     * @ORM\Column(name="Description", type="string", length=0, nullable=true)
      */
     private $description;
 
 
     /**
-     * Get id
+     * Get codeType
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeType()
     {
@@ -50,7 +51,8 @@ class Type_Morceaux
      * Set libelleType
      *
      * @param string $libelleType
-     * @return Type_Morceaux
+     *
+     * @return TypeMorceaux
      */
     public function setLibelleType($libelleType)
     {
@@ -62,7 +64,7 @@ class Type_Morceaux
     /**
      * Get libelleType
      *
-     * @return string 
+     * @return string
      */
     public function getLibelleType()
     {
@@ -73,7 +75,8 @@ class Type_Morceaux
      * Set description
      *
      * @param string $description
-     * @return Type_Morceaux
+     *
+     * @return TypeMorceaux
      */
     public function setDescription($description)
     {
@@ -85,7 +88,7 @@ class Type_Morceaux
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {

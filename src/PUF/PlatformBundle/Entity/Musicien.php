@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Musicien.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Musicien
  *
- * @ORM\Table()
+ * @ORM\Table(name="Musicien")
  * @ORM\Entity
  */
 class Musicien
@@ -15,82 +16,82 @@ class Musicien
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Musicien", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeMusicien;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_Musicien", type="string", length=100)
+     * @ORM\Column(name="Nom_Musicien", type="string", length=200, nullable=false)
      */
     private $nomMusicien;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Prenom_Musicien", type="string", length=100)
+     * @ORM\Column(name="Prénom_Musicien", type="string", length=50, nullable=true)
      */
     private $prenomMusicien;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="Annee_Naissance", type="integer")
+     * @ORM\Column(name="Année_Naissance", type="integer", nullable=true)
      */
     private $anneeNaissance;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="Annee_Mort", type="integer")
+     * @ORM\Column(name="Année_Mort", type="integer", nullable=true)
      */
     private $anneeMort;
 
     /**
      * @var \Pays
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Pays")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Pays")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Pays", referencedColumnName="Code_Pays")
      * })
      */
-    private $codePays;
+    private $pays;
 
-    /**
+
+	/**
      * @var \Genre
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Genre")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Genre")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Genre", referencedColumnName="Code_Genre")
      * })
      */
-    private $codeGenre;
-
-    /**
+    private $genre;
+	
+	/**
      * @var \Instrument
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Instrument")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Instrument")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Instrument", referencedColumnName="Code_Instrument")
      * })
      */
-    private $codeInstrument;
-
-    /**
-     * @var string
+    private $instrument;
+	
+	/**
+     * @var binary
      *
-     * @ORM\Column(name="Photo", type="string", length=255)
+     * @ORM\Column(name="Photo", type="blob", nullable=true)
      */
     private $photo;
-
-
+	
     /**
-     * Get id
+     * Get codeMusicien
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeMusicien()
     {
@@ -101,6 +102,7 @@ class Musicien
      * Set nomMusicien
      *
      * @param string $nomMusicien
+     *
      * @return Musicien
      */
     public function setNomMusicien($nomMusicien)
@@ -113,7 +115,7 @@ class Musicien
     /**
      * Get nomMusicien
      *
-     * @return string 
+     * @return string
      */
     public function getNomMusicien()
     {
@@ -124,6 +126,7 @@ class Musicien
      * Set prenomMusicien
      *
      * @param string $prenomMusicien
+     *
      * @return Musicien
      */
     public function setPrenomMusicien($prenomMusicien)
@@ -136,7 +139,7 @@ class Musicien
     /**
      * Get prenomMusicien
      *
-     * @return string 
+     * @return string
      */
     public function getPrenomMusicien()
     {
@@ -147,6 +150,7 @@ class Musicien
      * Set anneeNaissance
      *
      * @param integer $anneeNaissance
+     *
      * @return Musicien
      */
     public function setAnneeNaissance($anneeNaissance)
@@ -159,7 +163,7 @@ class Musicien
     /**
      * Get anneeNaissance
      *
-     * @return integer 
+     * @return integer
      */
     public function getAnneeNaissance()
     {
@@ -170,6 +174,7 @@ class Musicien
      * Set anneeMort
      *
      * @param integer $anneeMort
+     *
      * @return Musicien
      */
     public function setAnneeMort($anneeMort)
@@ -182,7 +187,7 @@ class Musicien
     /**
      * Get anneeMort
      *
-     * @return integer 
+     * @return integer
      */
     public function getAnneeMort()
     {
@@ -190,78 +195,82 @@ class Musicien
     }
 
     /**
-     * Set codePays
+     * Set pays
      *
-     * @param integer $codePays
+     * @param \Pays $pays
+     *
      * @return Musicien
      */
-    public function setCodePays($codePays)
+    public function setPays(\Pays $pays = null)
     {
-        $this->codePays = $codePays;
+        $this->pays = $pays;
 
         return $this;
     }
 
     /**
-     * Get codePays
+     * Get pays
      *
-     * @return integer 
+     * @return \Pays
      */
-    public function getCodePays()
+    public function getPays()
     {
-        return $this->codePays;
+        return $this->pays;
     }
-
-    /**
-     * Set codeGenre
+	
+	/**
+     * Set genre
      *
-     * @param integer $codeGenre
+     * @param \Genre $genre
+     *
      * @return Musicien
      */
-    public function setCodeGenre($codeGenre)
+    public function setGenre(\Genre $genre = null)
     {
-        $this->codeGenre = $codeGenre;
+        $this->genre = $genre;
 
         return $this;
     }
 
     /**
-     * Get codeGenre
+     * Get genre
      *
-     * @return integer 
+     * @return \Genre
      */
-    public function getCodeGenre()
+    public function getGenre()
     {
-        return $this->codeGenre;
+        return $this->genre;
     }
-
-    /**
-     * Set codeInstrument
+	
+	/**
+     * Set instrument
      *
-     * @param integer $codeInstrument
+     * @param \Instrument $instrument
+     *
      * @return Musicien
      */
-    public function setCodeInstrument($codeInstrument)
+    public function setInstrument(\Instrument $instrument = null)
     {
-        $this->codeInstrument = $codeInstrument;
+        $this->instrument = $instrument;
 
         return $this;
     }
 
     /**
-     * Get codeInstrument
+     * Get instrument
      *
-     * @return integer 
+     * @return \Instrument
      */
-    public function getCodeInstrument()
+    public function getInstrument()
     {
-        return $this->codeInstrument;
+        return $this->instrument;
     }
-
-    /**
+	
+	/**
      * Set photo
      *
-     * @param string $photo
+     * @param binary $photo
+     *
      * @return Musicien
      */
     public function setPhoto($photo)
@@ -274,10 +283,11 @@ class Musicien
     /**
      * Get photo
      *
-     * @return string 
+     * @return binary
      */
     public function getPhoto()
     {
         return $this->photo;
     }
+	
 }

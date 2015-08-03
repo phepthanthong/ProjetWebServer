@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Achat.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,45 +8,44 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Achat
  *
- * @ORM\Table()
+ * @ORM\Table(name="Achat")
  * @ORM\Entity
  */
 class Achat
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
+	 *
+     * @ORM\Column(name="Code_Achat", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeAchat;
 
     /**
      * @var \Enregistrement
      *
-     * @ORM\OneToOne(targetEntity="src\AppBundle\Entity\Enregistrement")
+     * @ORM\OneToOne(targetEntity="PUF\PlatformBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Enregistrement", referencedColumnName="Code_Morceau")
      * })
      */
-    private $codeEnregistrement;
+    private $enregistrement;
 
     /**
      * @var \Abonne
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Abonne")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Abonne")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Abonne", referencedColumnName="Code_Abonne")
+     *   @ORM\JoinColumn(name="Code_Abonné", referencedColumnName="Code_Abonné")
      * })
      */
-    private $codeAbonne;
+    private $abonne;
 
-
-    /**
-     * Get id
+	/**
+     * Get codeAchat
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeAchat()
     {
@@ -53,48 +53,52 @@ class Achat
     }
 
     /**
-     * Set codeEnregistrement
+     * Set enregistrement
      *
-     * @param integer $codeEnregistrement
+     * @param \Enregistrement $enregistrement
+     *
      * @return Achat
      */
-    public function setCodeEnregistrement($codeEnregistrement)
+    public function setEnregistrement($enregistrement)
     {
-        $this->codeEnregistrement = $codeEnregistrement;
+        $this->enregistrement = $enregistrement;
 
         return $this;
     }
 
     /**
-     * Get codeEnregistrement
+     * Get enregistrement
      *
-     * @return integer 
+     * @return \Enregistrement
      */
-    public function getCodeEnregistrement()
+    public function getEnregistrement()
     {
-        return $this->codeEnregistrement;
+        return $this->enregistrement;
     }
 
+    
+
     /**
-     * Set codeAbonne
+     * Set abonne
      *
-     * @param integer $codeAbonne
+     * @param \Abonne $abonne
+     *
      * @return Achat
      */
-    public function setCodeAbonne($codeAbonne)
+    public function setAbonne(\Abonne $abonne = null)
     {
-        $this->codeAbonne = $codeAbonne;
+        $this->abonne = $abonne;
 
         return $this;
     }
 
     /**
-     * Get codeAbonne
+     * Get abonne
      *
-     * @return integer 
+     * @return \Abonne
      */
-    public function getCodeAbonne()
+    public function getAbonne()
     {
-        return $this->codeAbonne;
+        return $this->abonne;
     }
 }

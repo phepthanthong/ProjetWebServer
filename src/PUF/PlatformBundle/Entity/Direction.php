@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Direction.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Direction
  *
- * @ORM\Table()
+ * @ORM\Table(name="Direction")
  * @ORM\Entity
  */
 class Direction
@@ -15,47 +16,47 @@ class Direction
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Direction", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeDirection;
 
     /**
-     * @var \Musicien
+     * @var \Orchestres
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Musicien")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Musicien", referencedColumnName="Code_Musicien")
-     * })
-     */
-    private $codeMusicien;
-
-    /**
-     * @var \Enregistrement
-     *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Enregistrement")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Morceau", referencedColumnName="Code_Morceau")
-     * })
-     */
-    private $codeMorceau;
-
-    /**
-     * @var \Orchestre
-     *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Orchestre")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Orchestres")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Orchestre", referencedColumnName="Code_Orchestre")
      * })
      */
-    private $codeOrchestre;
+    private $orchestre;
+
+    /**
+     * @var \Musicien
+     *
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Musicien")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Code_Musicien", referencedColumnName="Code_Musicien")
+     * })
+     */
+    private $musicien;
+
+    /**
+     * @var \Enregistrement
+     *
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Enregistrement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Code_Morceau", referencedColumnName="Code_Morceau")
+     * })
+     */
+    private $morceau;
 
 
     /**
-     * Get id
+     * Get codeDirection
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeDirection()
     {
@@ -63,71 +64,74 @@ class Direction
     }
 
     /**
-     * Set codeMusicien
+     * Set orchestre
      *
-     * @param integer $codeMusicien
+     * @param \Orchestres $orchestre
+     *
      * @return Direction
      */
-    public function setCodeMusicien($codeMusicien)
+    public function setOrchestre(\Orchestres $orchestre = null)
     {
-        $this->codeMusicien = $codeMusicien;
+        $this->orchestre = $orchestre;
 
         return $this;
     }
 
     /**
-     * Get codeMusicien
+     * Get orchestre
      *
-     * @return integer 
+     * @return \Orchestres
      */
-    public function getCodeMusicien()
+    public function getOrchestre()
     {
-        return $this->codeMusicien;
+        return $this->orchestre;
     }
 
     /**
-     * Set codeMorceau
+     * Set musicien
      *
-     * @param integer $codeMorceau
+     * @param \Musicien $musicien
+     *
      * @return Direction
      */
-    public function setCodeMorceau($codeMorceau)
+    public function setMusicien(\Musicien $musicien = null)
     {
-        $this->codeMorceau = $codeMorceau;
+        $this->musicien = $musicien;
 
         return $this;
     }
 
     /**
-     * Get codeMorceau
+     * Get musicien
      *
-     * @return integer 
+     * @return \Musicien
      */
-    public function getCodeMorceau()
+    public function getMusicien()
     {
-        return $this->codeMorceau;
+        return $this->musicien;
     }
 
     /**
-     * Set codeOrchestre
+     * Set morceau
      *
-     * @param integer $codeOrchestre
+     * @param \Enregistrement $morceau
+     *
      * @return Direction
      */
-    public function setCodeOrchestre($codeOrchestre)
+    public function setMorceau(\Enregistrement $morceau = null)
     {
-        $this->codeOrchestre = $codeOrchestre;
+        $this->morceau = $morceau;
 
         return $this;
     }
 
     /**
-     * Get codeOrchestre
+     * Get morceau
      *
-     * @return integer 
+     * @return \Enregistrement
      */
-    public function getCodeOrchestre()
+    public function getMorceau()
     {
-        return $this->codeOrchestre;
+        return $this->morceau;
     }
 }

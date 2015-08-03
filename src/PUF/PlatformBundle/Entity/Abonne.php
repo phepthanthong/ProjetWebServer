@@ -1,4 +1,5 @@
 <?php
+// src/PUF/MusikBundle/Entity/Abonne.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Abonne
  *
- * @ORM\Table()
+ * @ORM\Table(name="Abonné")
  * @ORM\Entity
  */
 class Abonne
@@ -15,45 +16,44 @@ class Abonne
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Abonné", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeAbonne;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_Abonne", type="string", length=100)
+     * @ORM\Column(name="Nom_Abonné", type="string", length=200, nullable=false)
      */
     private $nomAbonne;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Prenom_Abonne", type="string", length=100)
+     * @ORM\Column(name="Prénom_Abonné", type="string", length=50, nullable=true)
      */
     private $prenomAbonne;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Login", type="string", length=100)
+     * @ORM\Column(name="Login", type="string", length=50, nullable=true)
      */
     private $login;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Password", type="string", length=255)
+     * @ORM\Column(name="Password", type="string", length=50, nullable=true)
      */
     private $password;
 
-
     /**
-     * Get id
+     * Get codeAbonne
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeAbonne()
     {
@@ -64,6 +64,7 @@ class Abonne
      * Set nomAbonne
      *
      * @param string $nomAbonne
+     *
      * @return Abonne
      */
     public function setNomAbonne($nomAbonne)
@@ -76,7 +77,7 @@ class Abonne
     /**
      * Get nomAbonne
      *
-     * @return string 
+     * @return string
      */
     public function getNomAbonne()
     {
@@ -87,6 +88,7 @@ class Abonne
      * Set prenomAbonne
      *
      * @param string $prenomAbonne
+     *
      * @return Abonne
      */
     public function setPrenomAbonne($prenomAbonne)
@@ -99,7 +101,7 @@ class Abonne
     /**
      * Get prenomAbonne
      *
-     * @return string 
+     * @return string
      */
     public function getPrenomAbonne()
     {
@@ -110,6 +112,7 @@ class Abonne
      * Set login
      *
      * @param string $login
+     *
      * @return Abonne
      */
     public function setLogin($login)
@@ -122,17 +125,18 @@ class Abonne
     /**
      * Get login
      *
-     * @return string 
+     * @return string
      */
     public function getLogin()
     {
         return $this->login;
     }
-
-    /**
+	
+	/**
      * Set password
      *
      * @param string $password
+     *
      * @return Abonne
      */
     public function setPassword($password)
@@ -145,10 +149,11 @@ class Abonne
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
         return $this->password;
     }
+	
 }

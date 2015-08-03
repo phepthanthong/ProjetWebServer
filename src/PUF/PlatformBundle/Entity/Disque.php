@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Disque.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Disque
  *
- * @ORM\Table()
+ * @ORM\Table(name="Disque")
  * @ORM\Entity
  */
 class Disque
@@ -15,41 +16,41 @@ class Disque
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Disque", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeDisque;
 
     /**
-     * @var \Album
-     *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Album")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Album", referencedColumnName="Code_Album")
-     * })
-     */
-    private $codeAlbum;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="Reference_Album", type="string", length=100)
+     * @ORM\Column(name="Référence_Album", type="string", length=200, nullable=false)
      */
     private $referenceAlbum;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Reference_Disque", type="string", length=100)
+     * @ORM\Column(name="Référence_Disque", type="string", length=10, nullable=true)
      */
     private $referenceDisque;
 
+    /**
+     * @var \Album
+     *
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Album")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Code_Album", referencedColumnName="Code_Album")
+     * })
+     */
+    private $album;
+
 
     /**
-     * Get id
+     * Get codeDisque
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeDisque()
     {
@@ -57,32 +58,10 @@ class Disque
     }
 
     /**
-     * Set codeAlbum
-     *
-     * @param integer $codeAlbum
-     * @return Disque
-     */
-    public function setCodeAlbum($codeAlbum)
-    {
-        $this->codeAlbum = $codeAlbum;
-
-        return $this;
-    }
-
-    /**
-     * Get codeAlbum
-     *
-     * @return integer 
-     */
-    public function getCodeAlbum()
-    {
-        return $this->codeAlbum;
-    }
-
-    /**
      * Set referenceAlbum
      *
      * @param string $referenceAlbum
+     *
      * @return Disque
      */
     public function setReferenceAlbum($referenceAlbum)
@@ -95,7 +74,7 @@ class Disque
     /**
      * Get referenceAlbum
      *
-     * @return string 
+     * @return string
      */
     public function getReferenceAlbum()
     {
@@ -106,6 +85,7 @@ class Disque
      * Set referenceDisque
      *
      * @param string $referenceDisque
+     *
      * @return Disque
      */
     public function setReferenceDisque($referenceDisque)
@@ -118,10 +98,34 @@ class Disque
     /**
      * Get referenceDisque
      *
-     * @return string 
+     * @return string
      */
     public function getReferenceDisque()
     {
         return $this->referenceDisque;
+    }
+
+    /**
+     * Set album
+     *
+     * @param \Album $album
+     *
+     * @return Disque
+     */
+    public function setAlbum(\Album $album = null)
+    {
+        $this->album = $album;
+
+        return $this;
+    }
+
+    /**
+     * Get album
+     *
+     * @return \Album
+     */
+    public function getAlbum()
+    {
+        return $this->album;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Composer.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Composer
  *
- * @ORM\Table()
+ * @ORM\Table(name="Composer")
  * @ORM\Entity
  */
 class Composer
@@ -15,37 +16,37 @@ class Composer
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Composer", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeComposer;
 
     /**
      * @var \Musicien
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Musicien")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Musicien")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Musicien", referencedColumnName="Code_Musicien")
      * })
      */
-    private $codeMusicien;
+    private $musicien;
 
     /**
      * @var \Oeuvre
      *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Oeuvre")
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Oeuvre")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Code_Oeuvre", referencedColumnName="Code_Oeuvre")
      * })
      */
-    private $codeOeuvre;
+    private $oeuvre;
 
 
     /**
-     * Get id
+     * Get codeComposer
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeComposer()
     {
@@ -53,48 +54,50 @@ class Composer
     }
 
     /**
-     * Set codeMusicien
+     * Set musicien
      *
-     * @param integer $codeMusicien
+     * @param \Musicien $musicien
+     *
      * @return Composer
      */
-    public function setCodeMusicien($codeMusicien)
+    public function setMusicien(\Musicien $musicien = null)
     {
-        $this->codeMusicien = $codeMusicien;
+        $this->musicien = $musicien;
 
         return $this;
     }
 
     /**
-     * Get codeMusicien
+     * Get musicien
      *
-     * @return integer 
+     * @return \Musicien
      */
-    public function getCodeMusicien()
+    public function getMusicien()
     {
-        return $this->codeMusicien;
+        return $this->musicien;
     }
 
     /**
-     * Set codeOeuvre
+     * Set oeuvre
      *
-     * @param integer $codeOeuvre
+     * @param \Oeuvre $oeuvre
+     *
      * @return Composer
      */
-    public function setCodeOeuvre($codeOeuvre)
+    public function setOeuvre(\Oeuvre $oeuvre = null)
     {
-        $this->codeOeuvre = $codeOeuvre;
+        $this->oeuvre = $oeuvre;
 
         return $this;
     }
 
     /**
-     * Get codeOeuvre
+     * Get oeuvre
      *
-     * @return integer 
+     * @return \Oeuvre
      */
-    public function getCodeOeuvre()
+    public function getOeuvre()
     {
-        return $this->codeOeuvre;
+        return $this->oeuvre;
     }
 }

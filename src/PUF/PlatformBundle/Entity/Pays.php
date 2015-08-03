@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Pays.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -15,7 +16,7 @@ class Pays
     /**
      * @var integer
      *
-     * @ORM\Column(name="Code_Pays", type="integer")
+     * @ORM\Column(name="Code_Pays", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -24,15 +25,15 @@ class Pays
     /**
      * @var string
      *
-     * @ORM\Column(name="Nom_Pays", type="string", length=50)
+     * @ORM\Column(name="Nom_Pays", type="string", length=50, nullable=true)
      */
     private $nomPays;
 
 
     /**
-     * Get id
+     * Get codePays
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodePays()
     {
@@ -43,6 +44,7 @@ class Pays
      * Set nomPays
      *
      * @param string $nomPays
+     *
      * @return Pays
      */
     public function setNomPays($nomPays)
@@ -55,7 +57,7 @@ class Pays
     /**
      * Get nomPays
      *
-     * @return string 
+     * @return string
      */
     public function getNomPays()
     {

@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Oeuvre.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Oeuvre
  *
- * @ORM\Table()
+ * @ORM\Table(name="Oeuvre")
  * @ORM\Entity
  */
 class Oeuvre
@@ -15,69 +16,69 @@ class Oeuvre
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Oeuvre", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeOeuvre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Titre_Oeuvre", type="string", length=100)
+     * @ORM\Column(name="Titre_Oeuvre", type="string", length=0, nullable=false)
      */
     private $titreOeuvre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Sous_Titre", type="string", length=100)
+     * @ORM\Column(name="Sous_Titre", type="string", length=0, nullable=true)
      */
     private $sousTitre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Tonallite", type="string", length=50)
+     * @ORM\Column(name="Tonalité", type="string", length=20, nullable=true)
      */
-    private $tonallite;
+    private $tonalite;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="Code_Type", type="integer")
-     */
-    private $codeType;
-
-    /**
-     * @var \Type_Morceaux
-     *
-     * @ORM\ManyToOne(targetEntity="src\AppBundle\Entity\Type_Morceaux")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Type", referencedColumnName="Code_Type")
-     * })
+     * @ORM\Column(name="Année", type="integer", nullable=true)
      */
     private $annee;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * @ORM\Column(name="Oput", type="boolean")
+     * @ORM\Column(name="Opus", type="string", length=20, nullable=true)
      */
-    private $oput;
+    private $opus;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="Numero_Oput", type="integer")
+     * @ORM\Column(name="Numéro_Opus", type="integer", nullable=true)
      */
-    private $numeroOput;
+    private $numeroOpus = '0';
+
+    /**
+     * @var \TypeMorceaux
+     *
+     * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\TypeMorceaux")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Code_Type", referencedColumnName="Code_Type")
+     * })
+     */
+    private $type;
 
 
     /**
-     * Get id
+     * Get codeOeuvre
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeOeuvre()
     {
@@ -88,6 +89,7 @@ class Oeuvre
      * Set titreOeuvre
      *
      * @param string $titreOeuvre
+     *
      * @return Oeuvre
      */
     public function setTitreOeuvre($titreOeuvre)
@@ -100,7 +102,7 @@ class Oeuvre
     /**
      * Get titreOeuvre
      *
-     * @return string 
+     * @return string
      */
     public function getTitreOeuvre()
     {
@@ -111,6 +113,7 @@ class Oeuvre
      * Set sousTitre
      *
      * @param string $sousTitre
+     *
      * @return Oeuvre
      */
     public function setSousTitre($sousTitre)
@@ -123,7 +126,7 @@ class Oeuvre
     /**
      * Get sousTitre
      *
-     * @return string 
+     * @return string
      */
     public function getSousTitre()
     {
@@ -131,55 +134,34 @@ class Oeuvre
     }
 
     /**
-     * Set tonallite
+     * Set tonalite
      *
-     * @param string $tonallite
+     * @param string $tonalite
+     *
      * @return Oeuvre
      */
-    public function setTonallite($tonallite)
+    public function setTonalite($tonalite)
     {
-        $this->tonallite = $tonallite;
+        $this->tonalite = $tonalite;
 
         return $this;
     }
 
     /**
-     * Get tonallite
+     * Get tonalite
      *
-     * @return string 
+     * @return string
      */
-    public function getTonallite()
+    public function getTonalite()
     {
-        return $this->tonallite;
-    }
-
-    /**
-     * Set codeType
-     *
-     * @param integer $codeType
-     * @return Oeuvre
-     */
-    public function setCodeType($codeType)
-    {
-        $this->codeType = $codeType;
-
-        return $this;
-    }
-
-    /**
-     * Get codeType
-     *
-     * @return integer 
-     */
-    public function getCodeType()
-    {
-        return $this->codeType;
+        return $this->tonalite;
     }
 
     /**
      * Set annee
      *
      * @param integer $annee
+     *
      * @return Oeuvre
      */
     public function setAnnee($annee)
@@ -192,7 +174,7 @@ class Oeuvre
     /**
      * Get annee
      *
-     * @return integer 
+     * @return integer
      */
     public function getAnnee()
     {
@@ -200,48 +182,74 @@ class Oeuvre
     }
 
     /**
-     * Set oput
+     * Set opus
      *
-     * @param boolean $oput
+     * @param string $opus
+     *
      * @return Oeuvre
      */
-    public function setOput($oput)
+    public function setOpus($opus)
     {
-        $this->oput = $oput;
+        $this->opus = $opus;
 
         return $this;
     }
 
     /**
-     * Get oput
+     * Get opus
      *
-     * @return boolean 
+     * @return string
      */
-    public function getOput()
+    public function getOpus()
     {
-        return $this->oput;
+        return $this->opus;
     }
 
     /**
-     * Set numeroOput
+     * Set numeroOpus
      *
-     * @param integer $numeroOput
+     * @param integer $numeroOpus
+     *
      * @return Oeuvre
      */
-    public function setNumeroOput($numeroOput)
+    public function setNumeroOpus($numeroOpus)
     {
-        $this->numeroOput = $numeroOput;
+        $this->numeroOpus = $numeroOpus;
 
         return $this;
     }
 
     /**
-     * Get numeroOput
+     * Get numeroOpus
      *
-     * @return integer 
+     * @return integer
      */
-    public function getNumeroOput()
+    public function getNumeroOpus()
     {
-        return $this->numeroOput;
+        return $this->numeroOpus;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \TypeMorceaux $type
+     *
+     * @return Oeuvre
+     */
+    public function setType(\TypeMorceaux $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \TypeMorceaux
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

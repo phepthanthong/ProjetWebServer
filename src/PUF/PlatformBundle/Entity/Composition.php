@@ -1,4 +1,5 @@
 <?php
+// src/PUF/PlatformBundle/Entity/Composition.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -7,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Composition
  *
- * @ORM\Table()
+ * @ORM\Table(name="Composition")
  * @ORM\Entity
  */
 class Composition
@@ -15,38 +16,38 @@ class Composition
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="Code_Composition", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $codeComposition;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Titre_Composition", type="string", length=100)
+     * @ORM\Column(name="Titre_Composition", type="string", length=0, nullable=false)
      */
     private $titreComposition;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="Annee", type="integer")
+     * @ORM\Column(name="Année", type="integer", nullable=true)
      */
     private $annee;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="Composante_Composition", type="integer")
+     * @ORM\Column(name="Composante_Composition", type="string", length=0, nullable=true)
      */
     private $composanteComposition;
 
 
     /**
-     * Get id
+     * Get codeComposition
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeComposition()
     {
@@ -57,6 +58,7 @@ class Composition
      * Set titreComposition
      *
      * @param string $titreComposition
+     *
      * @return Composition
      */
     public function setTitreComposition($titreComposition)
@@ -69,7 +71,7 @@ class Composition
     /**
      * Get titreComposition
      *
-     * @return string 
+     * @return string
      */
     public function getTitreComposition()
     {
@@ -80,6 +82,7 @@ class Composition
      * Set annee
      *
      * @param integer $annee
+     *
      * @return Composition
      */
     public function setAnnee($annee)
@@ -92,7 +95,7 @@ class Composition
     /**
      * Get annee
      *
-     * @return integer 
+     * @return integer
      */
     public function getAnnee()
     {
@@ -102,7 +105,8 @@ class Composition
     /**
      * Set composanteComposition
      *
-     * @param integer $composanteComposition
+     * @param string $composanteComposition
+     *
      * @return Composition
      */
     public function setComposanteComposition($composanteComposition)
@@ -115,7 +119,7 @@ class Composition
     /**
      * Get composanteComposition
      *
-     * @return integer 
+     * @return string
      */
     public function getComposanteComposition()
     {
