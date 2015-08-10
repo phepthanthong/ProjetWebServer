@@ -35,17 +35,18 @@ class DefaultController extends Controller
 
     }
 
-    public function selectAction()
+    public function chercherAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Pays p WHERE p.nomPays = 'Vietnam'");
+        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Pays p");
 
         $listePays = $req->getResult();
-        foreach ($listePays as $product){
-            echo $product->getCodePays().' '.$product->getNomPays();
-        }
-        return new Response('--- Show Hang List Cac Pays ---');
+        //foreach ($listePays as $product){
+        //    echo $product->getCodePays().' '.$product->getNomPays();
+        //}
+        return $this->render('PUFPlatformBundle:Default:chercher.html.twig', array('query'=>$listePays));
     }
+
     public function showAction($id)
     {
         $product = $this->getDoctrine()

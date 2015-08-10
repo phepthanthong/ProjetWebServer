@@ -30,3 +30,14 @@
 
 </div>
 {% endblock %}
+
+{% block chercherResultat %}
+<div>
+	<ul>
+	  {% for pays in query%}
+	    <li>{{ pays.nomPays }}</li>
+	  {% endfor %}
+	</ul>
+</div>
+{% endblock %}
+
