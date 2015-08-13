@@ -22,9 +22,6 @@ class DefaultController extends Controller
     {
     	$product = new Pays();
     	$product->setNomPays('PaysDeMerveille');
-    	//$product->setPrenomAbonne('doan');
-    	//$product->setLogin('ngoclong');
-        //$product->setPassword('123456');
 
     	$em = $this->getDoctrine()->getManager();
 
@@ -41,10 +38,70 @@ class DefaultController extends Controller
         $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Pays p");
 
         $listePays = $req->getResult();
-        //foreach ($listePays as $product){
-        //    echo $product->getCodePays().' '.$product->getNomPays();
-        //}
         return $this->render('PUFPlatformBundle:Default:chercher.html.twig', array('query'=>$listePays));
+    }
+
+    public function chercherAlbumAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Album p");
+
+        $liste = $req->getResult();
+        return $this->render('PUFPlatformBundle:Default:album.html.twig', array('query'=>$liste));
+    }
+
+    public function chercherMusicienAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Musicien p");
+
+        $liste = $req->getResult();
+        return $this->render('PUFPlatformBundle:Default:musicien.html.twig', array('query'=>$liste));
+    }
+
+    public function chercherInterpreterAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Interpreter p");
+
+        $liste = $req->getResult();
+        return $this->render('PUFPlatformBundle:Default:interpreter.html.twig', array('query'=>$liste));
+    }
+
+    public function chercherGenreAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Genre p");
+
+        $liste = $req->getResult();
+        return $this->render('PUFPlatformBundle:Default:genre.html.twig', array('query'=>$liste));
+    }
+
+    public function chercherInstrumentAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Instrument p");
+
+        $liste = $req->getResult();
+        return $this->render('PUFPlatformBundle:Default:instrument.html.twig', array('query'=>$liste));
+    }
+
+    public function chercherComposition()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Composition p");
+
+        $liste = $req->getResult();
+        return $this->render('PUFPlatformBundle:Default:composition.html.twig', array('query'=>$liste));
+    }
+
+    public function chercherOeuvre()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->createQuery("SELECT p FROM PUFPlatformBundle:Oeuvre p");
+
+        $liste = $req->getResult();
+        return $this->render('PUFPlatformBundle:Default:oeuvre.html.twig', array('query'=>$liste));
     }
 
     public function showAction($id)
