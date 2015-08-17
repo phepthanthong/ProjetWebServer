@@ -9,7 +9,7 @@ html,body {
     font-family: 'Lato', sans-serif;
 }
 a {
-    color:#999;
+    color:#f44d3c;
 }
 a:hover {
     color:#111;
@@ -18,7 +18,7 @@ a:hover {
     color:#f44d3c;
 }
 .navbar-trans {
-	background-color:#2b2b2b;
+    background-color:#2b2b2b;
     color:#cdcdcd;
     border-width:0;
 }
