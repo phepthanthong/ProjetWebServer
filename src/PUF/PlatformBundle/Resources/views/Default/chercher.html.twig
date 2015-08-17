@@ -32,12 +32,19 @@
 {% endblock %}
 
 {% block chercherResultat %}
-<div>
-	<ul>
-	  {% for pays in query%}
-	    <li>{{ pays.nomPays }}</li>
-	  {% endfor %}
-	</ul>
+<div id="resultat">
+    <table border="1">
+        <tr>
+            <th>
+                Nom de Pays
+            </th>
+        </tr>
+        {% for pays in query %}
+            <tr>
+                <td>{{ pays.nomPays }}</td>
+            </tr>
+        {% endfor %}
+    </table>    
 </div>
 {% endblock %}
 
