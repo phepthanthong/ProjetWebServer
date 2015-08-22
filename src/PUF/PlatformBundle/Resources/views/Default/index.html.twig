@@ -6,7 +6,8 @@
       <h2 class="text-center lato animate slideInDown">et laisser la musique <b>vous détendre</b></h2>
       <p class="text-center">
         <br>
-        <a href="{{ path('catalogue_route') }}" class="btn btn-danger btn-lg btn-huge lato">Voir Notre Catalogue</a>
+        <!-- <a href="{{ path('catalogue_route') }}" class="btn btn-danger btn-lg btn-huge lato">Connecter pour voir notre catalogue</a> -->
+        <a href="#" class="btn btn-danger btn-lg btn-huge lato" data-toggle="modal" data-target="#loginModal">Connecter pour voir notre catalogue</a>
       </p>
     </div>
     <a href="#section2">
@@ -96,85 +97,5 @@
 {% block scrollup %}
   <div class="scroll-up">
     <a href="#"><i class="fa fa-angle-up"></i></a>
-  </div>
-{% endblock %}
-
-{% block loginModal %}
-  <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h1 class="text-center">Connexion</h1>
-        </div>
-        <div class="modal-body">
-          <h5 class="text-center">COMPLÉTER LES CHAMPS SUIVANTS POUR CONNECTER</h5>
-          <form class="form col-md-12 center-block">
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Nom d'utilisateur">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Mot de passe">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block" id="btn_login" name="btn_login">Connecter</button>
-              <span class="pull-right"><a href="#">S'inscire</a></span><span><a href="#">Besoin d'aide?</a></span>
-              
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <div class="col-md-12">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-          </div>  
-        </div>
-      </div>
-    </div>
-  </div>
-{% endblock %}
-
-{% block signupModal %}
-  <div class="modal fade" id="sigupModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h2 class="text-center">Inscription</h2>
-        </div>
-        <div class="modal-body">
-          <form role="form" method="post">
-            <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk">&nbsp;</span>Champs obligatoires</strong></div>
-          <div class="form-group">
-            <label for="InputName">Votre nom</label>
-            <div class="input-group">
-              <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Entrez votre nom" required>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="InputPassword">Votre mot de passe</label>
-            <div class="input-group">
-              <input type="text" class="form-control" name="InputPassword" id="InputPassword"  placeholder="Entrez votre mot de passe" required>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-            </div>
-          </div>
-          <span><?php echo $error; ?></span>
-          
-          <!-- <div class="form-group">
-            <label for="InputEmail">Confirm Email</label>
-            <div class="input-group">
-              <input type="email" class="form-control" id="InputEmailSecond" name="InputEmail" placeholder="Confirm Email" required>
-              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-            </div>
-          </div>   -->
-          </form>
-                  
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-          <button type="submit" class="btn btn-primary" id="btn_signup" name="btn_signup">Je m'inscris</button>
-        </div>
-      </div>
-    </div>
   </div>
 {% endblock %}

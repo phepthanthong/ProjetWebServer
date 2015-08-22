@@ -4,12 +4,29 @@ namespace PUF\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use PUF\PlatformBundle\Entity\Pays;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
+        $post = Request::createFromGlobals();
+        $username = $post->request->get("username");
+        $password = $post->request->get("password");
+
+        $em = $this->getDoctrine()->getManager();
+        $res = $em->createQuery("SELECT a FROM PUFPlatformBundle:Abonne a WHERE a.password='$password' AND a.login='$username'")->getResult();
+
+        if ($res != null) {
+            /*$_SESSION['login_user']=$username; // Initializing Session*/
+            $url = $this->generateUrl("catalogue_route");
+            return $this->redirect($url);
+        } else {
+            $this->get('session')->getFlashBag()->add('error', 'error ....!');
+        }
+    /*mysql_close($connection); // Closing Connection*/
+
         return $this->render('PUFPlatformBundle:Default:index.html.twig', array());
     }
 

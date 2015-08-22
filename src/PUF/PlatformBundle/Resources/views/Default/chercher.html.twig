@@ -4,21 +4,43 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/catalogue.css') }}">  
 {% endblock %}
 
-{% block dropdown %}
-    <ul class="nav navbar-nav navbar-left">  
-        <li><a href="{{ path('puf_platform_homepage') }}">Accueil</a></li>
-        <li>
-            <a data-toggle="dropdown">Recherche<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Albums</a></li>
-                <li><a href="#">Instruments</a></li>
-                <li><a href="#">Musiciens</a></li>                
-                <li><a href="#">Oeuvres</a></li>
-                <li><a href="#">Orchestres</a></li>
-                <li><a href="{{ path('chercher_route') }}">Pays</a></li>
+{% block navbar %}  
+<nav class="navbar navbar-trans" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand text-danger" href="#">MUSIQUE CLASSIQUE</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse" id="navbar-collapsible">
+            <ul class="nav navbar-nav navbar-left">  
+                <li><a href="{{ path('puf_platform_homepage') }}">Accueil</a></li>
+                <li>
+                    <a data-toggle="dropdown">Recherche<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Albums</a></li>
+                        <li><a href="#">Instruments</a></li>
+                        <li><a href="#">Musiciens</a></li>                
+                        <li><a href="#">Oeuvres</a></li>
+                        <li><a href="#">Orchestres</a></li>
+                        <li><a href="{{ path('chercher_route') }}">Pays</a></li>
+                    </ul>
+                </li>        
+            </ul>       
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#signupModal">S'inscrire</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
             </ul>
-        </li>        
-    </ul>       
+        </div><!-- /.navbar-collapse -->
+    </div>    
+</nav>
 {% endblock %}
 
 {% block chercherResultat %}
