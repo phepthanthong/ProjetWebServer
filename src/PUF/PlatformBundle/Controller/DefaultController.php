@@ -11,22 +11,21 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+        // Get data from Login Modal
         $post = Request::createFromGlobals();
         $username = $post->request->get("username");
         $password = $post->request->get("password");
 
         $em = $this->getDoctrine()->getManager();
-        $res = $em->createQuery("SELECT a FROM PUFPlatformBundle:Abonne a WHERE a.password='$password' AND a.login='$username'")->getResult();
-
+        $res = $em->createQuery("SELECT a FROM PUFPlatformBundle:Abonne a 
+                                 WHERE a.password='$password' 
+                                 AND a.login='$username'")->getResult();
         if ($res != null) {
-            /*$_SESSION['login_user']=$username; // Initializing Session*/
             $url = $this->generateUrl("catalogue_route");
             return $this->redirect($url);
         } else {
             $this->get('session')->getFlashBag()->add('error', 'error ....!');
         }
-    /*mysql_close($connection); // Closing Connection*/
-
         return $this->render('PUFPlatformBundle:Default:index.html.twig', array());
     }
 
@@ -37,7 +36,13 @@ class DefaultController extends Controller
     
     public function createAction()
     {
-    	$product = new Pays();
+        // Get data from Signup Modal
+        $post = Request::createFromGlobals();
+        $username = $post->request->get("username");
+        $password = $post->request->get("password");
+
+        
+    	/*$product = new Abonne();
     	$product->setNomPays('PaysDeMerveille');
 
     	$em = $this->getDoctrine()->getManager();
@@ -45,7 +50,7 @@ class DefaultController extends Controller
     	$em->persist($product);
     	$em->flush();
 
-    	return new Response('Create product id '.$product->getCodePays());
+    	return new Response('Create product id '.$product->getCodePays());*/
 
     }
 
