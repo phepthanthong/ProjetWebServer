@@ -1,34 +1,81 @@
+{% extends "PUFPlatformBundle:Default:catalogue.html.twig" %}
+
+{% block chercherResultat %}
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="row">
-				
-				<div class="col-md-4">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-					<p>asdasdasd</p>
+			<form role="form" method="POST" class="form-inline">
+				<div class="form-group">
+					<input type="text" name="chercher_value" class="form-control"/>
+					<button type="submit" class="btn btn-success">
+						Submit
+					</button>
 				</div>
-				<div class="col-md-4">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-					<p>asdasdasd</p>
-				</div>
-				<div class="col-md-4">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-					<p>asdasdasd</p>
-				</div>
-				<div class="col-md-4">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-					<p>asdasdasd</p>
-				</div>
-								<div class="col-md-4">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-				</div>
-								<div class="col-md-4">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-				</div>
-								<div class="col-md-4">
-					<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" />
-				</div>
-			</div>
+			</form>
+			</br>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Nom
+						</th>
+						<th>
+							Prenom
+						</th>
+						<th>
+							Annee Naissance
+						</th>
+						<th>
+							Annee Mort
+						</th>
+						<th>
+							Pays
+						</th>
+						<th>
+							Genre
+						</th>
+						<th>
+							Instrument
+						</th>
+						<th>
+							Image
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for liste in query %}
+					<tr>
+						<td>
+							{{ liste.nomMusicien }}
+						</td>
+						<td>
+							{{ liste.prenomMusicien }}
+						</td>
+						<td>
+							{{ liste.anneeNaissance }}
+						</td>
+						<td>
+							{{ liste.anneeMort }}
+						</td>
+						<td>
+							{{ liste.nomPays }}
+						</td>
+						<td>
+							<img alt={{ liste.nomInstrument }} src="data:image/png;base64, {{ liste.image }}" style="height: 150px;width: 150px"/>
+							<label>{{ liste.nomInstrument }}</label>
+						</td>
+						<td>
+							{{ liste.libelleAbrege }}
+						</td>
+
+						<td>
+							<img alt={{ liste.nomMusicien }} src="data:image/png;base64, {{ liste.photo }}" style="height: 150px;width: 150px"/>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
+{% endblock %}

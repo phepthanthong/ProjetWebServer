@@ -19,20 +19,6 @@ class DefaultController extends Controller
         return $this->render('PUFPlatformBundle:Default:catalogue.html.twig', array());
     }
     
-    public function createAction()
-    {
-    	$product = new Pays();
-    	$product->setNomPays('PaysDeMerveille');
-
-    	$em = $this->getDoctrine()->getManager();
-
-    	$em->persist($product);
-    	$em->flush();
-
-    	return new Response('Create product id '.$product->getCodePays());
-
-    }
-
     public function form1Action()
     {
 
@@ -53,7 +39,6 @@ class DefaultController extends Controller
         $post = Request::createFromGlobals();
         $val = $post->request->get('chercher_value');
         if( $albumId == 0) {
-
 
             $em = $this->getDoctrine()->getManager();
             $res = $em->createQuery("SELECT a.codeAlbum, a.titreAlbum, a.anneeAlbum, g.libelleAbrege, e.nomEditeur, a.pochette 
@@ -119,13 +104,28 @@ class DefaultController extends Controller
 
     public function chercherMusicienAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $req = $em->createQuery("SELECT m.nomMusicien, m.prenomMusicien, m.anneeNaissance, m.anneeMort, p.nomPays, 
-        g.libelleAbrege, i.nomInstrument, i.image, m.photo FROM PUFPlatformBundle:Musicien m, PUFPlatformBundle:Pays p, PUFPlatformBundle:Genre g, PUFPlatformBundle:Instrument i
-        WHERE ");
+        $post = Request::createFromGlobals();
+        $val = $post->request->get('chercher_value');
 
-        $liste = $req->getResult();
-        return $this->render('PUFPlatformBundle:Default:musicien.html.twig', array('query'=>$liste));
+        $em = $this->getDoctrine()->getManager();
+        $res = $em->createQuery("SELECT m.nomMusicien, m.prenomMusicien, m.anneeNaissance, m.anneeMort, p.nomPays, 
+        g.libelleAbrege, i.nomInstrument, i.image, m.photo FROM PUFPlatformBundle:Musicien m, PUFPlatformBundle:Pays p, PUFPlatformBundle:Genre g, PUFPlatformBundle:Instrument i
+        WHERE m.nomMusicien LIKE '%$val%' OR
+              m.prenomMusicien LIKE '%$val%' OR
+              m.anneeNaissance LIKE '%$val%' OR
+              m.anneeMort LIKE '%$val%' OR
+              p.nomPays LIKE '%$val%' OR
+              g.libelleAbrege LIKE '%$val%' OR
+              i.nomInstrument LIKE '%$val%'")->getResult();
+
+        $liste = array();
+        foreach ($res as $m) {            
+            $m['photo'] = base64_encode(stream_get_contents($m['photo']));
+            $m['image'] = base64_encode(stream_get_contents($m['image']));
+            $liste[] = $m;
+        }
+
+        return $this->render('PUFPlatformBundle:Default:chercherMusicien.html.twig', array('query'=>$liste));
     }
 
     public function chercherGenreAction()
@@ -159,13 +159,25 @@ class DefaultController extends Controller
         return $this->render('PUFPlatformBundle:Default:chercherInstrument.html.twig', array('query'=>$liste));
     }
 
-    public function chercherOeuvre()
+    public function chercherOeuvreAction()
     {
+        $post = Request::createFromGlobals();
+        $val = $post->request->get('chercher_value');
+
         $em = $this->getDoctrine()->getManager();
         $req = $em->createQuery("SELECT o.titreOeuvre, o.sousTitre, o.tonalite, o.annee, o.opus,
-        o.numeroOpus, t.libelleType, t.description FROM PUFPlatformBundle:Oeuvre o, PUFPlatformBundle:TypeMorceau t");
+        o.numeroOpus, t.libelleType, t.description FROM PUFPlatformBundle:Oeuvre o, PUFPlatformBundle:TypeMorceaux t
+        WHERE o.titreOeuvre LIKE '%$val' OR
+              o.sousTitre LIKE '%$val%' OR
+              o.tonalite LIKE '%$val%' OR
+              o.annee LIKE '%$val%' OR
+              o.opus LIKE '%$val%' OR
+              o.numeroOpus LIKE '%$val%' OR
+              t.libelleType LIKE '%$val%' OR
+              t.description LIKE '%$val%'");
 
         $liste = $req->getResult();
+        
         return $this->render('PUFPlatformBundle:Default:chercherOeuvre.html.twig', array('query'=>$liste));
     }
 

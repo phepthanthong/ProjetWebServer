@@ -1,0 +1,79 @@
+{% extends "PUFPlatformBundle:Default:catalogue.html.twig" %}
+
+{% block chercherResultat %}	
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form" method="POST" class="form-inline">
+				<div class="form-group">
+					<input type="text" name="chercher_value" class="form-control"/>
+					<button type="submit" class="btn btn-success">
+						Submit
+					</button>
+				</div>
+			</form>
+			</br>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Titre
+						</th>
+						<th>
+							Sous-Titre
+						</th>
+						<th>
+							Tonalite
+						</th>
+						<th>
+							Annee
+						</th>
+						<th>
+							Opus
+						</th>
+						<th>
+							Numero Opus
+						</th>
+						<th>
+							Type
+						</th>
+						<th>
+							Description
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for liste in query %}
+					<tr>
+						<td>
+							{{ liste.titreOeuvre }}
+						</td>
+						<td>
+							{{ liste.sousTitre }}
+						</td>
+						<td>
+							{{ liste.tonalite }}
+						</td>
+						<td>
+							{{ liste.annee }}
+						</td>
+						<td>
+							{{ liste.opus }}
+						</td>
+						<td>
+							{{ liste.numeroOpus }}
+						</td>
+						<td>
+							{{ liste.libelleType }}
+						</td>
+						<td>
+							{{ liste.description }}
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
