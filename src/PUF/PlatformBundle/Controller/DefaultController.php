@@ -85,18 +85,19 @@ class DefaultController extends Controller
         }
     }
 
-    public function extraitAction($code_morceau)
+    public function extraitAction($extraitId)
     {
         $em = $this->getDoctrine()->getManager();
         $res = $em->createQuery("SELECT e.extrait FROM PUFPlatformBundle:Enregistrement e 
-            WHERE e.codeMorceau = ".$code_morceau)->getResult();
-        $response = new Response(stream_get_contents($res2[0]['extrait']));
+            WHERE e.codeMorceau = ".$extraitId)->getResult();
+        $response = new Response(stream_get_contents($res[0]['extrait']));
         $response->headers->set('Content-Type','audio/mpeg');
-        $response->headers->set('Content-Length:'.strlen(stream_get_contents($res2[0]['extrait'])));
+        //$response->headers->set('Content-Length', strlen(stream_get_contents($res[0]['extrait'])));
+        // $response->headers->set('Content-Length:'.strlen(stream_get_contents($res[0]['extrait'])));
 
-        $response->headers->set('Content-Disposition: filename=morceau'.$code_morceau);
-        $response->headers->set('X-pad: avoid browser bug');
-        $response->headers->set('Cache-Control: no-cache');
+        // $response->headers->set('Content-Disposition: filename=morceau'.$extraitId);
+        // $response->headers->set('X-pad: avoid browser bug');
+        // $response->headers->set('Cache-Control: no-cache');
 
         return $response;
 
