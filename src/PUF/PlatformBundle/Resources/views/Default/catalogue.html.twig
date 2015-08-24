@@ -4,6 +4,10 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/catalogue.css') }}">  
 {% endblock %}
 
+{% block navbar %}
+	<nav class="navbar navbar-trans" role="navigation">
+{% endblock %}
+
 {% block menubar %}
 <div class="navbar-collapse collapse" id="navbar-collapsible">
 	<ul class="nav navbar-nav navbar-left">
@@ -12,10 +16,11 @@
 			<a data-toggle="dropdown">Recherche
 			<span class="caret"></span></a>
 			<ul class="dropdown-menu">
-			   <li><a href="#">Interpreter</a></li>
-			   <li><a href="#">Musicien</a></li>
-			   <li><a href="#">Composer</a></li>
-			   <li><a href="{{ path('chercher_route') }}">Pays</a></li>
+			   <li><a href="{{ path('detail_album') }}">Album</a></li>
+			   <li><a href="{{ path('chercher_genre') }}">Genre</a></li>
+			   <li><a href="{{ path('chercher_instrument') }}">Instrument</a></li>
+			   <li><a href="{{ path('chercher_musicien') }}">Musicien</a></li>
+			   <li><a href="{{ path('chercher_oeuvre') }}">Oeuvre</a></li>
 			</ul>
 			
 		</li>

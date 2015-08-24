@@ -1,0 +1,61 @@
+{% extends "PUFPlatformBundle:Default:catalogue.html.twig" %}
+
+{% block chercherResultat %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form" action="{{ path('detail_album') }}" method="POST" class="form-inline">
+				<div class="form-group">
+					<input type="text" name="chercher_value" class="form-control"/>
+					<button type="submit" class="btn btn-success">
+						Submit
+					</button>
+				</div>
+			</form>
+			</br>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Titre
+						</th>
+						<th>
+							Annee
+						</th>
+						<th>
+							Pochette
+						</th>
+						<th>
+							Genre
+						</th>
+						<th>
+							Editeur
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for liste in query %}
+					<tr>
+						<td>
+							<a href="{{ path('detail_album', {'albumId':liste.codeAlbum}) }}">{{ liste.titreAlbum }}</a>
+						</td>
+						<td>
+							{{ liste.anneeAlbum }}
+						</td>
+						<td>
+							<img alt={{ liste.titreAlbum }} src="data:image/png;base64, {{ liste.pochette }}" style="height: 150px;width: 150px"/>
+						</td>
+						<td>
+							{{ liste.libelleAbrege }}
+						</td>
+						<td>
+							{{ liste.nomEditeur }}
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

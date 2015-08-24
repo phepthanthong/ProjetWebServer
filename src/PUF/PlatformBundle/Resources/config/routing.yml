@@ -6,7 +6,22 @@ add_pays:
     defaults: { _controller: PUFPlatformBundle:Default:create }
 catalogue_route:
     path: /catalogue
-    defaults: {_controller: PUFPlatformBundle:Default:showcatalogue}
-chercher_route:
-    path: /chercher
-    defaults: {_controller: PUFPlatformBundle:Default:chercher}
+    defaults: { _controller: PUFPlatformBundle:Default:showcatalogue }
+detail_album:
+    path: /album/{albumId}
+    defaults: { _controller: PUFPlatformBundle:Default:chercherAlbum, albumId:0 }
+chercher_genre:
+    path: /genre/
+    defaults: { _controller: PUFPlatformBundle:Default:chercherGenre }
+chercher_instrument:
+    path: /instrument/
+    defaults: { _controller: PUFPlatformBundle:Default:chercherInstrument }
+chercher_musicien:
+    path: /musicien/
+    defaults: { _controller: PUFPlatformBundle:Default:chercherMusicien }
+chercher_oeuvre:
+    path: /oeuvre/
+    defaults: { _controller: PUFPlatformBundle:Default:chercherOeuvre }
+musik_extrait:
+    path: /extrait/{extraitId}
+    defaults: { _controller: PUFPlatformBundle:Default:extrait, extraitId:0 }

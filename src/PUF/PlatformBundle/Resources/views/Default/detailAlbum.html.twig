@@ -1,0 +1,21 @@
+{% extends "PUFPlatformBundle:Default:catalogue.html.twig" %}
+
+{% block chercherResultat %}
+
+{% for liste2 in query2 %}
+<p>{{ liste2.titreAlbum }}</p>
+<img alt={{ liste2.titreAlbum }} src="data:image/png;base64, {{ liste2.pochette }}" style="height: 150px;width: 150px"/>
+
+{% endfor %}
+
+
+{% for liste in query %}
+	<p>{{ liste.prix }}</p>
+	<audio src="{{ path('musik_extrait', {'extraitId' : liste.codeMorceau }) }}" controls=""></audio>
+
+{% endfor %}
+
+
+
+
+{% endblock %}

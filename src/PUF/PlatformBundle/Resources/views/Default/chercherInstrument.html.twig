@@ -1,0 +1,44 @@
+{% extends "PUFPlatformBundle:Default:catalogue.html.twig" %}
+
+{% block chercherResultat %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form" method="POST" class="form-inline">
+				<div class="form-group">
+					<input type="text" name="chercher_value" class="form-control"/>
+					<button type="submit" class="btn btn-success">
+						Submit
+					</button>
+				</div>
+			</form>
+			</br>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Instrument
+						</th>
+						<th>
+							Image
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for liste in query %}
+					<tr>
+						<td>
+							{{ liste.nomInstrument }}
+						</td>
+						<td>
+							<img alt={{ liste.nomInstrument }} src="data:image/png;base64, {{ liste.image }}" style="height: 200px;width: 160px"/>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
