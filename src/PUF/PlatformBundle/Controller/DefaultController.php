@@ -4,13 +4,28 @@ namespace PUF\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use PUF\PlatformBundle\Entity\Pays;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
+        // Get data from Login Modal
+        $post = Request::createFromGlobals();
+        $username = $post->request->get("username");
+        $password = $post->request->get("password");
+
+        $em = $this->getDoctrine()->getManager();
+        $res = $em->createQuery("SELECT a FROM PUFPlatformBundle:Abonne a 
+                                 WHERE a.password='$password' 
+                                 AND a.login='$username'")->getResult();
+        if ($res != null) {
+            $url = $this->generateUrl("catalogue_route");
+            return $this->redirect($url);
+        } else {
+            $this->get('session')->getFlashBag()->add('error', 'error ....!');
+        }
         return $this->render('PUFPlatformBundle:Default:index.html.twig', array());
     }
 
@@ -20,10 +35,8 @@ class DefaultController extends Controller
     }
     
     public function form1Action()
-    {
-
+    {       
         $post = Request::createFromGlobals();
-
         if ($post->request->has('submit')) {
             $cat = $post->request->get('cat');
             $url = $this->generateUrl('puf_musik_cat', array('cat' => $cat));

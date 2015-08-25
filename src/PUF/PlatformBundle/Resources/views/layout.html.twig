@@ -1,7 +1,7 @@
 <?php 
 //include("login.php");
 include("signup.php");
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@ include("signup.php");
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>{% block title %}Projet Web Server - Musique Classique{% endblock %}</title>
-  
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -20,77 +20,153 @@ include("signup.php");
   <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/style.css') }}">  
   {% endblock %}
 </head>
+<body>
+<!-- {% if app.session.flashBag.has('error') %}
+<div class="alert alert-danger">
+    {% for msg in app.session.flashBag.get('error') %}
+        {{ msg }}
+    {% endfor %}
+</div>
+{% endif %} -->
 
-<body>  
-   <!--navbar-fixed-top-->
-  {% block navbar %}
-  <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
-  {% endblock %}
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand text-danger" href="#">MUSIQUE CLASSIQUE</a>
+{% block navbar %}  
+<nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand text-danger" href="#">MUSIQUE CLASSIQUE</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->                
+    <div class="navbar-collapse collapse" id="navbar-collapsible">
+      <ul class="nav navbar-nav navbar-left">            
+        <li><a href="#section1">Accueil</a></li>
+        <li><a href="#section2">Description</a></li>
+        <li><a href="#section3">A Propos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" data-toggle="modal" data-target="#signupModal">S'inscrire</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>    
+</nav>
+{% endblock %}
+
+{% block section1 %}
+{% endblock %}
+
+{% block section2 %}
+{% endblock %}
+
+{% block section3 %}
+{% endblock %}
+
+{% block scrollup %}
+{% endblock %}  
+
+{% block loginModal %}  
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h1 class="text-center">Connexion</h1>
       </div>
+      <div class="modal-body">
+        <h5 class="text-center">COMPLÉTER LES CHAMPS SUIVANTS POUR CONNECTER</h5>
+        <form role="form" method="post" class="form col-md-12 center-block">
+          <div class="form-group">
+            <input id="username" name="username" type="text" class="form-control input-lg" placeholder="Nom d'utilisateur">
+          </div>
+          <div class="form-group">
+            <input id="password" name="password" type="password" class="form-control input-lg" placeholder="Mot de passe">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-lg btn-block" id="btn_login" name="btn_login">Connecter</button>
+            <span class="pull-right"><a href="#">S'inscire</a></span><span><a href="#">Besoin d'aide?</a></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      {% block menubar %}
-      <div class="navbar-collapse collapse" id="navbar-collapsible">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="#section1">Accueil</a></li>
-          <li><a href="#section2">Description</a></li>
-          <li><a href="#section3">A Propos</a></li>
-        </ul>       
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" data-toggle="modal" data-target="#sigupModal">S'inscrire</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
+{% block signupModal %}  
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="text-center">Inscription</h2>
+      </div>
+      <div class="modal-body">
+        <form role="form" method="post">
+          <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk">&nbsp;</span>Champs obligatoires</strong></div>
+          <div class="form-group">
+            <label for="InputName">Votre nom</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Entrez votre nom" required>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="InputPrenom">Votre prenom</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="InputPrenom" id="InputPrenom"  placeholder="Entrez votre prenom" required>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="InputLogin">Votre login</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="InputLogin" id="InputLogin"  placeholder="Entrez votre login" required>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="InputPassword">Votre mot de passe</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="InputPassword" id="InputPassword"  placeholder="Entrez votre mot de passe" required>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+            </div>
+          </div>
+          <span><?php echo $error; ?></span>  
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary" id="btn_signup" name="btn_signup">Je m'inscris</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
 
-        </ul>
-      </div><!-- /.navbar-collapse -->
-      {% endblock %}
-    </div>    
-  </nav>
-   <!-- endblock menubar -->
+{% block chercherMenu %}
+{% endblock %}
 
-  {% block section1 %}
-  {% endblock %}
+{% block chercherResultat %}
+{% endblock %}
 
-  {% block section2 %}
-  {% endblock %}
+{% block chercherFooter %}
+{% endblock %}
 
-  {% block section3 %}
-  {% endblock %}
-
-  {% block scrollup %}
-  {% endblock %}  
-  
-  {% block loginModal %}  
-  {% endblock %}
-
-  {% block sigupModal %}  
-  {% endblock %}
-
-  {% block chercherMenu %}
-  {% endblock %}
-
-  {% block chercherResultat %}
-  {% endblock %}
-
-  {% block chercherFooter %}
-  {% endblock %}
-
-
-
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="{{ asset('bundles/framework/js/script.js') }}"></script>
-</body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ asset('bundles/framework/js/script.js') }}"></script>
+  </body>
 </html>
