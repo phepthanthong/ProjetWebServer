@@ -3,7 +3,7 @@
 namespace PUF\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use PUF\PlatformBundle\Entity\Pays;
+use PUF\PlatformBundle\Entity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -21,7 +21,7 @@ class DefaultController extends Controller
                                  WHERE a.password='$password' 
                                  AND a.login='$username'")->getResult();
         if ($res != null) {
-            $url = $this->generateUrl("catalogue_route");
+            $url = $this->generateUrl("detail_album");
             return $this->redirect($url);
         } else {
             $this->get('session')->getFlashBag()->add('error', 'error ....!');
@@ -49,8 +49,9 @@ class DefaultController extends Controller
 
     public function chercherAlbumAction($albumId)
     {   
-        $post = Request::createFromGlobals();
+        $post = Request::createFromGlobals();        
         $val = $post->request->get('chercher_value');
+        $session = $this->getRequest()->getSession();
         if( $albumId == 0) {
 
             $em = $this->getDoctrine()->getManager();
@@ -71,11 +72,11 @@ class DefaultController extends Controller
         }
         else {
             $em = $this->getDoctrine()->getManager();
-            $res = $em->createQuery("SELECT en.codeMorceau, en.nomDeFichier, en.duree, en.dureeSeconde, en.prix, en.extrait 
+            $res = $em->createQuery("SELECT en.codeEnregistrement, en.nomDeFichier, en.duree, en.dureeSeconde, en.prix, en.extrait 
                 FROM PUFPlatformBundle:Album a, PUFPlatformBundle:Genre g, PUFPlatformBundle:Editeur e,
                 PUFPlatformBundle:Disque d, PUFPlatformBundle:CompositionDisque c, PUFPlatformBundle:Enregistrement en 
                 WHERE a.genre = g.codeGenre AND a.editeur = e.codeEditeur AND a.codeAlbum = d.album AND
-                d.codeDisque = c.disque AND c.morceau = en.codeMorceau
+                d.codeDisque = c.disque AND c.enregistrement = en.codeEnregistrement
                 AND a.codeAlbum LIKE '$albumId'");//->getResult();
 
             $liste = $res->getResult();
@@ -102,7 +103,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $res = $em->createQuery("SELECT e.extrait FROM PUFPlatformBundle:Enregistrement e 
-            WHERE e.codeMorceau = ".$extraitId)->getResult();
+            WHERE e.codeEnregistrement = ".$extraitId)->getResult();
         $response = new Response(stream_get_contents($res[0]['extrait']));
         $response->headers->set('Content-Type','audio/mpeg');
         //$response->headers->set('Content-Length', strlen(stream_get_contents($res[0]['extrait'])));
@@ -193,6 +194,20 @@ class DefaultController extends Controller
         $liste = $req->getResult();
         
         return $this->render('PUFPlatformBundle:Default:chercherOeuvre.html.twig', array('query'=>$liste));
+    }
+
+    public function panierAction()
+    {
+        $post = Request::createFromGlobals();
+        $val = $post->request->get('chercher_value');
+
+        $em = $this->getDoctrine()->getManager();
+        $req = $em->createQuery("SELECT g.libelleAbrege FROM PUFPlatformBundle:Genre g 
+            WHERE g.libelleAbrege LIKE '%$val%'");
+
+        $liste = $req->getResult();
+        return $this->render('PUFPlatformBundle:Default:panier.html.twig', array('query'=>$liste));
+
     }
 
 }

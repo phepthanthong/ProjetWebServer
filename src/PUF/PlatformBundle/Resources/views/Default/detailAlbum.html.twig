@@ -38,6 +38,9 @@
 						<th>
 							Prix
 						</th>
+						<th>
+							Acheter
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -47,13 +50,16 @@
 							{{ liste.nomDeFichier }}
 						</td>
 						<td>
-							<audio src="{{ path('musik_extrait', {'extraitId' : liste.codeMorceau }) }}" controls=""></audio>
+							<audio src="{{ path('musik_extrait', {'extraitId' : liste.codeEnregistrement }) }}" controls=""></audio>
 						</td>
 						<td>
 							{{ liste.dureeSeconde }}
 						</td>
 						<td>
 							{{ liste.prix }}
+						</td>
+						<td>
+							<a href="#"><span class="glyphicon glyphicon-shopping-cart"> Buy</span></a>
 						</td>
 					</tr>
 					{% endfor %}

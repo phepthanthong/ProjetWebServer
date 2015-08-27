@@ -1,5 +1,5 @@
 <?php
-// src/PUF/PlatformBundle/Entity/Composer.php
+// src/PUF/MusikBundle/Entity/Composer.php
 
 namespace PUF\PlatformBundle\Entity;
 

@@ -19,7 +19,7 @@ if (isset($_POST['btn_login'])) {
 		$rows = mysql_num_rows($query);
 		if ($rows == 1) {
 			$_SESSION['login_user']=$username; // Initializing Session
-			header("location: catalogue.html.twig"); // Redirecting To Other Page
+			header("location: chercherAlbum.html.twig"); // Redirecting To Other Page
 		} else {
 			$error = "Username or Password is invalid";
 		}

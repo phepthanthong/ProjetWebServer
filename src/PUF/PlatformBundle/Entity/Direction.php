@@ -47,10 +47,10 @@ class Direction
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Morceau", referencedColumnName="Code_Morceau")
+     *   @ORM\JoinColumn(name="Code_Enregistrement", referencedColumnName="Code_Enregistrement")
      * })
      */
-    private $morceau;
+    private $enregistrement;
 
 
     /**
@@ -112,26 +112,26 @@ class Direction
     }
 
     /**
-     * Set morceau
+     * Set enregistrement
      *
-     * @param \Enregistrement $morceau
+     * @param \Enregistrement $enregistrement
      *
      * @return Direction
      */
-    public function setMorceau(\Enregistrement $morceau = null)
+    public function setEnregistrement(\Enregistrement $enregistrement = null)
     {
-        $this->morceau = $morceau;
+        $this->enregistrement = $enregistrement;
 
         return $this;
     }
 
     /**
-     * Get morceau
+     * Get enregistrement
      *
      * @return \Enregistrement
      */
-    public function getMorceau()
+    public function getEnregistrement()
     {
-        return $this->morceau;
+        return $this->enregistrement;
     }
 }

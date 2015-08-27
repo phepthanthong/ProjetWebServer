@@ -3,7 +3,8 @@
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/framework/css/catalogue.css') }}">  
 {% endblock %}
-{% block navbar %}  
+
+{% block navbar %}
 <nav class="navbar navbar-trans" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,14 +29,23 @@
                         <li><a href="{{ path('chercher_instrument') }}">Instrument</a></li>
                         <li><a href="{{ path('chercher_musicien') }}">Musicien</a></li>
                         <li><a href="{{ path('chercher_oeuvre') }}">Oeuvre</a></li>
+                        <li><a href="{{ path('panier_route') }}">Panier</a></li>
                     </ul>
                 </li>        
             </ul>       
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-toggle="modal" data-target="#signupModal">S'inscrire</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
+                <li><a href="{{ path('puf_platform_homepage') }}">Log out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>    
 </nav>
 {% endblock %}
+
+
+{% block loginModal %}
+<span></span>
+{% endblock %}
+
+{% block signupModal %}
+<span></span>
+{% endblock %}  
