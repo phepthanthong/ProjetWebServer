@@ -1,0 +1,76 @@
+{% extends "PUFPlatformBundle:Default:catalogue.html.twig" %}
+
+{% block navbar %}  
+<nav class="navbar navbar-trans" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand text-danger" href="#">MUSIQUE CLASSIQUE</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse" id="navbar-collapsible">
+            <ul class="nav navbar-nav navbar-left">  
+                <li><a href="{{ path('puf_platform_homepage') }}">Accueil</a></li>                
+            </ul>       
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>    
+</nav>
+{% endblock %}
+
+{% block signupModal %}  
+<div class="container">
+    <div class="row">
+        <h1>Inscription</h1>
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            <form role="form" method="post" action="">
+                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk">&nbsp;</span>Champs obligatoires</strong></div>
+                <div class="form-group">
+                    <label for="InputNom">Votre nom</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="InputNom" id="InputNom" placeholder="Entrez votre nom" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputPrenom">Votre prenom</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="InputPrenom" id="InputPrenom"  placeholder="Entrez votre prenom" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputLogin">Votre login</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="InputLogin" id="InputLogin"  placeholder="Entrez votre login" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputPassword">Votre mot de passe</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="InputPassword" id="InputPassword"  placeholder="Entrez votre mot de passe" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-2 col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2">
+            <button type="submit" class="btn btn-primary" id="btn_signup" name="btn_signup">Je m'inscris</button>
+            <button type="button" class="btn btn-default">Annuler</button>            
+        </div>
+    </div>
+</div>
+    
+
+{% endblock %}

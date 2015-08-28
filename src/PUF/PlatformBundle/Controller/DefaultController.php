@@ -9,9 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $req)
     {
         // Get data from Login Modal
+        //session_start();
+
         $post = Request::createFromGlobals();
         $username = $post->request->get("username");
         $password = $post->request->get("password");
@@ -21,8 +23,14 @@ class DefaultController extends Controller
                                  WHERE a.password='$password' 
                                  AND a.login='$username'")->getResult();
         if ($res != null) {
-            $url = $this->generateUrl("detail_album");
+            
+            $session = $req->getSession();
+            $session->set('username', $username);
+
+            $url = $this->generateUrl("detail_album");            
+
             return $this->redirect($url);
+
         } else {
             $this->get('session')->getFlashBag()->add('error', 'error ....!');
         }
@@ -47,11 +55,41 @@ class DefaultController extends Controller
         }
     }
 
-    public function chercherAlbumAction($albumId)
+    public function signupSuccessAction()
+    {
+        $post = Request::createFromGlobals();
+        if ($post->request->has('submit')) {
+            $username = $post->request->get("InputLogin");
+            $password = $post->request->get("InputPassword");
+            $nom = $post->request->get("InputNom");
+            $prenom = $post->request->get("InputPrenom");
+            $newuser = new Abonne();
+            $newuser->setNomAbonne($nom);
+            $newuser->setPrenomAbonne($prenom);
+            $newuser->setLogin($username);
+            $newuser->setPassword($password);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newuser);
+            $em->flush();
+            return new Response('Bienvenue '.$newuser->getNomAbonne() .' sur notre page !' );
+        } else {
+            return new Response('Error' );
+        }
+        
+        /*return $this->render('PUFPlatformBundle:Default:signup_success.html.twig');*/
+        /* eturn new Response('Bienvenue '.$product->getNomAbonne() .' sur notre page !' );*/
+    }
+    
+    public function chercherAlbumAction($albumId, Request $rq)
     {   
+        $session = $rq->getSession();
+        $username = $session->get('username');
+
         $post = Request::createFromGlobals();        
         $val = $post->request->get('chercher_value');
+
         $session = $this->getRequest()->getSession();
+        
         if( $albumId == 0) {
 
             $em = $this->getDoctrine()->getManager();
@@ -71,6 +109,10 @@ class DefaultController extends Controller
             return $this->render('PUFPlatformBundle:Default:chercherAlbum.html.twig', array('query'=>$liste));
         }
         else {
+
+            
+
+
             $em = $this->getDoctrine()->getManager();
             $res = $em->createQuery("SELECT en.codeEnregistrement, en.nomDeFichier, en.duree, en.dureeSeconde, en.prix, en.extrait 
                 FROM PUFPlatformBundle:Album a, PUFPlatformBundle:Genre g, PUFPlatformBundle:Editeur e,
@@ -94,7 +136,22 @@ class DefaultController extends Controller
                 $liste2[] = $m;
             }
 
-            return $this->render('PUFPlatformBundle:Default:detailAlbum.html.twig', array('query'=>$liste, 'query2'=>$liste2));
+            //------------------------------------
+
+            // $buy = $post->request->get('codeBuy');
+            // $sup = $em->createQuery("SELECT a.codeAbonne FROM PUFPlatformBundle:Abonne a
+            //     WHERE a.prenomAbonne = '$username'");
+            // $col2 = $sup->getResult();
+            
+            // $val_col2 = array_values(array_values($col2)[0])[0];
+            // //$val_col2 = array_shift(array_slice($col2, 0, 1));
+            // var_dump($val_col2);
+            // var_dump($buy);
+            // $res3 = $em->createQuery("INSERT INTO PUFPlatformBundle:Achat (enregistrement, abonne) 
+            //     values ('$buy', 2)");
+            // $liste3 = $res3->getResult();
+
+            return $this->render('PUFPlatformBundle:Default:detailAlbum.html.twig', array('query'=>$liste, 'query2'=>$liste2/*, 'query3'=>$liste3*/));
 
         }
     }
@@ -196,18 +253,27 @@ class DefaultController extends Controller
         return $this->render('PUFPlatformBundle:Default:chercherOeuvre.html.twig', array('query'=>$liste));
     }
 
-    public function panierAction()
+    public function panierAction(Request $req)
     {
-        $post = Request::createFromGlobals();
-        $val = $post->request->get('chercher_value');
-
+        $session = $req->getSession();
+        $username = $session->get('username');
+        var_dump($username);
         $em = $this->getDoctrine()->getManager();
-        $req = $em->createQuery("SELECT g.libelleAbrege FROM PUFPlatformBundle:Genre g 
-            WHERE g.libelleAbrege LIKE '%$val%'");
+        $res = $em->createQuery("SELECT a.codeAbonne, a.nomAbonne, a.prenomAbonne FROM PUFPlatformBundle:Abonne a
+           WHERE a.prenomAbonne = '$username'");
 
-        $liste = $req->getResult();
+    
+
+        $liste = $res->getResult();
+
+        // $res2 = $em->createQuery("INSERT INTO PUFPlatformBundle:Achat (enregistrement, abonne) values ('$enregistrement', '1')");
+        // // $req2 = $em->createQuery("SELECT en.nomDeFichier, en.duree, en.dureeSeconde, en.prix 
+        // //     FROM PUFPlatformBundle:Enregistrement WHERE en.codeEnregistrement = '$enregistrement'");
+
+        // $liste2 = $req2->getResult();
+
         return $this->render('PUFPlatformBundle:Default:panier.html.twig', array('query'=>$liste));
-
     }
+
 
 }
