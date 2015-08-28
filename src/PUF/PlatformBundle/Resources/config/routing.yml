@@ -1,6 +1,12 @@
 puf_platform_homepage:
     path:     /
     defaults: { _controller: PUFPlatformBundle:Default:index }
+signup:
+    path: /signup
+    defaults: { _controller: PUFPlatformBundle:Default:signup }
+signup_success:
+    path: /signup_success
+    defaults: { _controller: PUFPlatformBundle:Default:signupSuccess }
 add_pays:
     path:     /add-pays
     defaults: { _controller: PUFPlatformBundle:Default:create }

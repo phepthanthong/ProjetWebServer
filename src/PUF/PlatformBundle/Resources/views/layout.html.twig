@@ -50,7 +50,8 @@ include("signup.php");
         <li><a href="#section3">A Propos</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" data-toggle="modal" data-target="#signupModal">S'inscrire</a></li>
+        <!-- <li><a href="#" data-toggle="modal" data-target="#signupModal">S'inscrire</a></li> -->
+        <li><a href="{{ path('signup') }}">S'inscrire</a></li>
         <li><a href="#" data-toggle="modal" data-target="#loginModal">Connexion</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -115,9 +116,9 @@ include("signup.php");
         <form role="form" method="post">
           <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk">&nbsp;</span>Champs obligatoires</strong></div>
           <div class="form-group">
-            <label for="InputName">Votre nom</label>
+            <label for="InputNom">Votre nom</label>
             <div class="input-group">
-              <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Entrez votre nom" required>
+              <input type="text" class="form-control" name="InputNom" id="InputNom" placeholder="Entrez votre nom" required>
               <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
             </div>
           </div>
@@ -147,7 +148,7 @@ include("signup.php");
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-        <button type="submit" class="btn btn-primary" id="btn_signup" name="btn_signup">Je m'inscris</button>
+        <button type="button" class="btn btn-primary" id="btn_signup" name="btn_signup">Je m'inscris</button>
       </div>
     </div>
   </div>

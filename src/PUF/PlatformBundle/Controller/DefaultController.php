@@ -4,6 +4,7 @@ namespace PUF\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use PUF\PlatformBundle\Entity;
+use PUF\PlatformBundle\Entity\Abonne;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,6 +28,38 @@ class DefaultController extends Controller
             $this->get('session')->getFlashBag()->add('error', 'error ....!');
         }
         return $this->render('PUFPlatformBundle:Default:index.html.twig', array());
+    }
+
+    public function signupAction()
+    {
+        return $this->render('PUFPlatformBundle:Default:signup.html.twig');
+    }
+
+    public function signupSuccessAction()
+    {
+        $post = Request::createFromGlobals();
+        if ($post->request->has('submit')) {
+            $username = $post->request->get("InputLogin");
+            $password = $post->request->get("InputPassword");
+            $nom = $post->request->get("InputNom");
+            $prenom = $post->request->get("InputPrenom");
+
+            $newuser = new Abonne();
+            $newuser->setNomAbonne($nom);
+            $newuser->setPrenomAbonne($prenom);
+            $newuser->setLogin($username);
+            $newuser->setPassword($password);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($newuser);
+            $em->flush();
+            return new Response('Bienvenue '.$newuser->getNomAbonne() .' sur notre page !' );
+        } else {
+            return new Response('Error' );
+        }
+        
+        /*return $this->render('PUFPlatformBundle:Default:signup_success.html.twig');*/
+        /* eturn new Response('Bienvenue '.$product->getNomAbonne() .' sur notre page !' );*/
     }
 
     public function showcatalogueAction()
