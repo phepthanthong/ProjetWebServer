@@ -17,13 +17,13 @@
 				<thead>
 					<tr>
 						<th>
-							Code
+							Nom de Fichier
 						</th>
 						<th>
-							Nom
+							Duree
 						</th>
 						<th>
-							Prenom
+							Prix
 						</th>
 					</tr>
 				</thead>
@@ -31,13 +31,13 @@
 					{% for liste in query %}
 					<tr>
 						<td>
-							{{ liste.codeAbonne }}
+							{{ liste.nomDeFichier }}
 						</td>
 						<td>
-							{{ liste.nomAbonne }}
+							{{ liste.duree }}
 						</td>
 						<td>
-							{{ liste.prenomAbonne }}
+							{{ liste.prix }}
 						</td>
 					</tr>
 					{% endfor %}

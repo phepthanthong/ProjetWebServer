@@ -30,7 +30,7 @@ class Editeur
     private $nomEditeur;
 
     /**
-     * @var \Pays
+     * @var Pays
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Pays")
      * @ORM\JoinColumns({
@@ -77,11 +77,11 @@ class Editeur
     /**
      * Set pays
      *
-     * @param \Pays $pays
+     * @param Pays $pays
      *
      * @return Editeur
      */
-    public function setPays(\Pays $pays = null)
+    public function setPays($pays)
     {
         $this->pays = $pays;
 
@@ -91,7 +91,7 @@ class Editeur
     /**
      * Get pays
      *
-     * @return \Pays
+     * @return Pays
      */
     public function getPays()
     {

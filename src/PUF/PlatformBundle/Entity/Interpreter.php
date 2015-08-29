@@ -23,7 +23,7 @@ class Interpreter
     private $codeInterpreter;
 
 	/**
-     * @var \Enregistrement
+     * @var Enregistrement
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
@@ -33,7 +33,7 @@ class Interpreter
     private $enregistrement;
 	
     /**
-     * @var \Musicien
+     * @var Musicien
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Musicien")
      * @ORM\JoinColumns({
@@ -43,7 +43,7 @@ class Interpreter
     private $musicien;
 
     /**
-     * @var \Instrument
+     * @var Instrument
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Instrument")
      * @ORM\JoinColumns({
@@ -66,11 +66,11 @@ class Interpreter
 	/**
      * Set enregistrement
      *
-     * @param \Enregistrement $enregistrement
+     * @param Enregistrement $enregistrement
      *
      * @return Interpreter
      */
-    public function setEnregistrement(\Enregistrement $enregistrement = null)
+    public function setEnregistrement($enregistrement)
     {
         $this->enregistrement = $enregistrement;
 
@@ -80,7 +80,7 @@ class Interpreter
     /**
      * Get enregistrement
      *
-     * @return \Enregistrement
+     * @return Enregistrement
      */
     public function getEnregistrement()
     {
@@ -90,11 +90,11 @@ class Interpreter
     /**
      * Set musicien
      *
-     * @param \Musicien $musicien
+     * @param Musicien $musicien
      *
      * @return Interpreter
      */
-    public function setMusicien(\Musicien $musicien = null)
+    public function setMusicien($musicien)
     {
         $this->musicien = $musicien;
 
@@ -104,7 +104,7 @@ class Interpreter
     /**
      * Get musicien
      *
-     * @return \Musicien
+     * @return Musicien
      */
     public function getMusicien()
     {
@@ -114,11 +114,11 @@ class Interpreter
     /**
      * Set instrument
      *
-     * @param \Instrument $instrument
+     * @param Instrument $instrument
      *
      * @return Interpreter
      */
-    public function setInstrument(\Instrument $instrument = null)
+    public function setInstrument($instrument)
     {
         $this->instrument = $instrument;
 
@@ -128,7 +128,7 @@ class Interpreter
     /**
      * Get instrument
      *
-     * @return \Instrument
+     * @return Instrument
      */
     public function getInstrument()
     {

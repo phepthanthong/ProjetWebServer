@@ -1,5 +1,5 @@
 <?php
-// src/PUF/MusikBundle/Entity/Composer.php
+// src/PUF/PlatformBundle/Entity/Composer.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -23,7 +23,7 @@ class Composer
     private $codeComposer;
 
     /**
-     * @var \Musicien
+     * @var Musicien
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Musicien")
      * @ORM\JoinColumns({
@@ -33,7 +33,7 @@ class Composer
     private $musicien;
 
     /**
-     * @var \Oeuvre
+     * @var Oeuvre
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Oeuvre")
      * @ORM\JoinColumns({
@@ -56,11 +56,11 @@ class Composer
     /**
      * Set musicien
      *
-     * @param \Musicien $musicien
+     * @param Musicien $musicien
      *
      * @return Composer
      */
-    public function setMusicien(\Musicien $musicien = null)
+    public function setMusicien($musicien)
     {
         $this->musicien = $musicien;
 
@@ -70,7 +70,7 @@ class Composer
     /**
      * Get musicien
      *
-     * @return \Musicien
+     * @return Musicien
      */
     public function getMusicien()
     {
@@ -80,11 +80,11 @@ class Composer
     /**
      * Set oeuvre
      *
-     * @param \Oeuvre $oeuvre
+     * @param Oeuvre $oeuvre
      *
      * @return Composer
      */
-    public function setOeuvre(\Oeuvre $oeuvre = null)
+    public function setOeuvre($oeuvre)
     {
         $this->oeuvre = $oeuvre;
 
@@ -94,7 +94,7 @@ class Composer
     /**
      * Get oeuvre
      *
-     * @return \Oeuvre
+     * @return Oeuvre
      */
     public function getOeuvre()
     {

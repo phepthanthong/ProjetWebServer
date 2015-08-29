@@ -37,7 +37,7 @@ class Disque
     private $referenceDisque;
 
     /**
-     * @var \Album
+     * @var Album
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Album")
      * @ORM\JoinColumns({
@@ -108,11 +108,11 @@ class Disque
     /**
      * Set album
      *
-     * @param \Album $album
+     * @param Album $album
      *
      * @return Disque
      */
-    public function setAlbum(\Album $album = null)
+    public function setAlbum($album)
     {
         $this->album = $album;
 
@@ -122,7 +122,7 @@ class Disque
     /**
      * Get album
      *
-     * @return \Album
+     * @return Album
      */
     public function getAlbum()
     {

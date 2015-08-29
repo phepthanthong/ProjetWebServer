@@ -1,5 +1,5 @@
 <?php
-// src/PUF/MusikBundle/Entity/Achat.php
+// src/PUF/PlatformBundle/Entity/Achat.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -23,17 +23,17 @@ class Achat
     private $codeAchat;
 
     /**
-     * @var \Enregistrement
+     * @var Enregistrement
      *
      * @ORM\OneToOne(targetEntity="PUF\PlatformBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Code_Enregistrement", referencedColumnName="Code_Morceau")
+     *   @ORM\JoinColumn(name="Code_Enregistrement", referencedColumnName="Code_Enregistrement")
      * })
      */
     private $enregistrement;
 
     /**
-     * @var \Abonne
+     * @var Abonne
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Abonne")
      * @ORM\JoinColumns({
@@ -55,7 +55,7 @@ class Achat
     /**
      * Set enregistrement
      *
-     * @param \Enregistrement $enregistrement
+     * @param Enregistrement $enregistrement
      *
      * @return Achat
      */
@@ -69,7 +69,7 @@ class Achat
     /**
      * Get enregistrement
      *
-     * @return \Enregistrement
+     * @return Enregistrement
      */
     public function getEnregistrement()
     {
@@ -81,11 +81,11 @@ class Achat
     /**
      * Set abonne
      *
-     * @param \Abonne $abonne
+     * @param Abonne $abonne
      *
      * @return Achat
      */
-    public function setAbonne(\Abonne $abonne = null)
+    public function setAbonne($abonne)
     {
         $this->abonne = $abonne;
 
@@ -95,7 +95,7 @@ class Achat
     /**
      * Get abonne
      *
-     * @return \Abonne
+     * @return Abonne
      */
     public function getAbonne()
     {

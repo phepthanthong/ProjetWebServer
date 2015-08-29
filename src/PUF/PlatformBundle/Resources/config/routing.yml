@@ -32,5 +32,5 @@ musik_extrait:
     path: /extrait/{extraitId}
     defaults: { _controller: PUFPlatformBundle:Default:extrait, extraitId:0 }
 panier_route:
-    path: /panier
-    defaults: { _controller: PUFPlatformBundle:Default:panier }
+    path: /panier/{extraitId}
+    defaults: { _controller: PUFPlatformBundle:Default:panier, extraitId:0 }

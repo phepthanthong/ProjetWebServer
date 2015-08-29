@@ -65,7 +65,7 @@ class Enregistrement
     private $extrait;
 
     /**
-     * @var \Composition
+     * @var Composition
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Composition")
      * @ORM\JoinColumns({
@@ -232,11 +232,11 @@ class Enregistrement
     /**
      * Set composition
      *
-     * @param \Composition $composition
+     * @param Composition $composition
      *
      * @return Enregistrement
      */
-    public function setComposition(\Composition $composition = null)
+    public function setComposition($composition)
     {
         $this->composition = $composition;
 
@@ -246,7 +246,7 @@ class Enregistrement
     /**
      * Get composition
      *
-     * @return \Composition
+     * @return Composition
      */
     public function getComposition()
     {

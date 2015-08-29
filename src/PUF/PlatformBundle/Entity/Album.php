@@ -1,5 +1,5 @@
 <?php
-// src/PUF/MusikBundle/Entity/Album.php
+// src/PUF/PlatformBundle/Entity/Album.php
 
 namespace PUF\PlatformBundle\Entity;
 
@@ -44,7 +44,7 @@ class Album
     private $pochette;
 
     /**
-     * @var \Genre
+     * @var Genre
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Genre")
      * @ORM\JoinColumns({
@@ -54,7 +54,7 @@ class Album
     private $genre;
 
     /**
-     * @var \Editeur
+     * @var Editeur
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Editeur")
      * @ORM\JoinColumns({
@@ -149,11 +149,11 @@ class Album
     /**
      * Set genre
      *
-     * @param \Genre $genre
+     * @param Genre $genre
      *
      * @return Album
      */
-    public function setGenre(\Genre $genre = null)
+    public function setGenre($genre)
     {
         $this->genre = $genre;
 
@@ -163,7 +163,7 @@ class Album
     /**
      * Get genre
      *
-     * @return \Genre
+     * @return Genre
      */
     public function getGenre()
     {
@@ -173,11 +173,11 @@ class Album
     /**
      * Set editeur
      *
-     * @param \Editeur $editeur
+     * @param Editeur $editeur
      *
      * @return Album
      */
-    public function setEditeur(\Editeur $editeur = null)
+    public function setEditeur($editeur)
     {
         $this->editeur = $editeur;
 
@@ -187,7 +187,7 @@ class Album
     /**
      * Get editeur
      *
-     * @return \Editeur
+     * @return Editeur
      */
     public function getEditeur()
     {

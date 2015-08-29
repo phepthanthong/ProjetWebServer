@@ -30,7 +30,7 @@ class Emprunter
     private $dateEmprunt;
 
     /**
-     * @var \Album
+     * @var Album
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Album")
      * @ORM\JoinColumns({
@@ -40,7 +40,7 @@ class Emprunter
     private $album;
 
     /**
-     * @var \Abonne
+     * @var Abonne
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Abonne")
      * @ORM\JoinColumns({
@@ -63,7 +63,7 @@ class Emprunter
     /**
      * Set dateEmprunt
      *
-     * @param \DateTime $dateEmprunt
+     * @param DateTime $dateEmprunt
      *
      * @return Emprunter
      */
@@ -77,7 +77,7 @@ class Emprunter
     /**
      * Get dateEmprunt
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateEmprunt()
     {
@@ -87,11 +87,11 @@ class Emprunter
     /**
      * Set album
      *
-     * @param \Album $album
+     * @param Album $album
      *
      * @return Emprunter
      */
-    public function setAlbum(\Album $album = null)
+    public function setAlbum($album)
     {
         $this->album = $album;
 
@@ -101,7 +101,7 @@ class Emprunter
     /**
      * Get album
      *
-     * @return \Album
+     * @return Album
      */
     public function getAlbum()
     {
@@ -111,11 +111,11 @@ class Emprunter
     /**
      * Set abonne
      *
-     * @param \Abonne $abonne
+     * @param Abonne $abonne
      *
      * @return Emprunter
      */
-    public function setAbonne(\Abonne $abonne = null)
+    public function setAbonne($abonne)
     {
         $this->abonne = $abonne;
 
@@ -125,7 +125,7 @@ class Emprunter
     /**
      * Get abonne
      *
-     * @return \Abonne
+     * @return Abonne
      */
     public function getAbonne()
     {

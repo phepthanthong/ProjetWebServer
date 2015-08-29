@@ -60,10 +60,8 @@
 						</td>
 						<td>
 							<form role="form" action="{{ path('panier_route') }}" method="POST" class="form-inline">
-								<a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-								<button type="submit" class="btn btn-success" name="{{ liste.codeEnregistrement }}">
-									Buy
-								</button>
+								<a name="buy" type="submit" href="{{ path('panier_route', {'extraitId' : liste.codeEnregistrement }) }}"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+								
 							</form>
 						</td>
 					</tr>

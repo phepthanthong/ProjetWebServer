@@ -23,7 +23,7 @@ class CompositionOeuvre
     private $codeComposerOeuvre;
 
     /**
-     * @var \Oeuvre
+     * @var Oeuvre
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Oeuvre")
      * @ORM\JoinColumns({
@@ -33,7 +33,7 @@ class CompositionOeuvre
     private $oeuvre;
 
     /**
-     * @var \Composition
+     * @var Composition
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Composition")
      * @ORM\JoinColumns({
@@ -56,11 +56,11 @@ class CompositionOeuvre
     /**
      * Set oeuvre
      *
-     * @param \Oeuvre $oeuvre
+     * @param Oeuvre $oeuvre
      *
      * @return CompositionOeuvre
      */
-    public function setOeuvre(\Oeuvre $oeuvre = null)
+    public function setOeuvre($oeuvre)
     {
         $this->oeuvre = $oeuvre;
 
@@ -70,7 +70,7 @@ class CompositionOeuvre
     /**
      * Get oeuvre
      *
-     * @return \Oeuvre
+     * @return Oeuvre
      */
     public function getOeuvre()
     {
@@ -80,11 +80,11 @@ class CompositionOeuvre
     /**
      * Set composition
      *
-     * @param \Composition $composition
+     * @param Composition $composition
      *
      * @return CompositionOeuvre
      */
-    public function setComposition(\Composition $composition = null)
+    public function setComposition($composition)
     {
         $this->composition = $composition;
 
@@ -94,7 +94,7 @@ class CompositionOeuvre
     /**
      * Get composition
      *
-     * @return \Composition
+     * @return Composition
      */
     public function getComposition()
     {

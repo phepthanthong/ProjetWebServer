@@ -51,7 +51,7 @@ class Musicien
     private $anneeMort;
 
     /**
-     * @var \Pays
+     * @var Pays
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Pays")
      * @ORM\JoinColumns({
@@ -62,7 +62,7 @@ class Musicien
 
 
 	/**
-     * @var \Genre
+     * @var Genre
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Genre")
      * @ORM\JoinColumns({
@@ -72,7 +72,7 @@ class Musicien
     private $genre;
 	
 	/**
-     * @var \Instrument
+     * @var Instrument
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Instrument")
      * @ORM\JoinColumns({
@@ -197,11 +197,11 @@ class Musicien
     /**
      * Set pays
      *
-     * @param \Pays $pays
+     * @param Pays $pays
      *
      * @return Musicien
      */
-    public function setPays(\Pays $pays = null)
+    public function setPays($pays)
     {
         $this->pays = $pays;
 
@@ -211,7 +211,7 @@ class Musicien
     /**
      * Get pays
      *
-     * @return \Pays
+     * @return Pays
      */
     public function getPays()
     {
@@ -221,11 +221,11 @@ class Musicien
 	/**
      * Set genre
      *
-     * @param \Genre $genre
+     * @param Genre $genre
      *
      * @return Musicien
      */
-    public function setGenre(\Genre $genre = null)
+    public function setGenre($genre)
     {
         $this->genre = $genre;
 
@@ -235,7 +235,7 @@ class Musicien
     /**
      * Get genre
      *
-     * @return \Genre
+     * @return Genre
      */
     public function getGenre()
     {
@@ -245,11 +245,11 @@ class Musicien
 	/**
      * Set instrument
      *
-     * @param \Instrument $instrument
+     * @param Instrument $instrument
      *
      * @return Musicien
      */
-    public function setInstrument(\Instrument $instrument = null)
+    public function setInstrument($instrument)
     {
         $this->instrument = $instrument;
 
@@ -259,7 +259,7 @@ class Musicien
     /**
      * Get instrument
      *
-     * @return \Instrument
+     * @return Instrument
      */
     public function getInstrument()
     {

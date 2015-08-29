@@ -23,7 +23,7 @@ class Instrumentation
     private $codeInstrumentation;
 
     /**
-     * @var \Oeuvre
+     * @var Oeuvre
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Oeuvre")
      * @ORM\JoinColumns({
@@ -33,7 +33,7 @@ class Instrumentation
     private $oeuvre;
 
     /**
-     * @var \Instrument
+     * @var Instrument
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Instrument")
      * @ORM\JoinColumns({
@@ -56,11 +56,11 @@ class Instrumentation
     /**
      * Set oeuvre
      *
-     * @param \Oeuvre $oeuvre
+     * @param Oeuvre $oeuvre
      *
      * @return Instrumentation
      */
-    public function setOeuvre(\Oeuvre $oeuvre = null)
+    public function setOeuvre($oeuvre)
     {
         $this->oeuvre = $oeuvre;
 
@@ -70,7 +70,7 @@ class Instrumentation
     /**
      * Get oeuvre
      *
-     * @return \Oeuvre
+     * @return Oeuvre
      */
     public function getOeuvre()
     {
@@ -80,11 +80,11 @@ class Instrumentation
     /**
      * Set instrument
      *
-     * @param \Instrument $instrument
+     * @param Instrument $instrument
      *
      * @return Instrumentation
      */
-    public function setInstrument(\Instrument $instrument = null)
+    public function setInstrument($instrument)
     {
         $this->instrument = $instrument;
 
@@ -94,7 +94,7 @@ class Instrumentation
     /**
      * Get instrument
      *
-     * @return \Instrument
+     * @return Instrument
      */
     public function getInstrument()
     {

@@ -30,7 +30,7 @@ class CompositionDisque
     private $position;
 
     /**
-     * @var \Disque
+     * @var Disque
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Disque")
      * @ORM\JoinColumns({
@@ -40,7 +40,7 @@ class CompositionDisque
     private $disque;
 
     /**
-     * @var \Enregistrement
+     * @var Enregistrement
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
@@ -87,11 +87,11 @@ class CompositionDisque
     /**
      * Set disque
      *
-     * @param \Disque $disque
+     * @param Disque $disque
      *
      * @return CompositionDisque
      */
-    public function setDisque(\Disque $disque = null)
+    public function setDisque($disque)
     {
         $this->disque = $disque;
 
@@ -101,7 +101,7 @@ class CompositionDisque
     /**
      * Get disque
      *
-     * @return \Disque
+     * @return Disque
      */
     public function getDisque()
     {
@@ -111,11 +111,11 @@ class CompositionDisque
     /**
      * Set enregistrement
      *
-     * @param \Enregistrement $enregistrement
+     * @param Enregistrement $enregistrement
      *
      * @return CompositionDisque
      */
-    public function setEnregistrement(\Enregistrement $enregistrement = null)
+    public function setEnregistrement($enregistrement)
     {
         $this->enregistrement = $enregistrement;
 
@@ -125,7 +125,7 @@ class CompositionDisque
     /**
      * Get enregistrement
      *
-     * @return \Enregistrement
+     * @return Enregistrement
      */
     public function getEnregistrement()
     {

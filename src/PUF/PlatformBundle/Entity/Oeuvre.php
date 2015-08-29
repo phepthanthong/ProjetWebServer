@@ -65,7 +65,7 @@ class Oeuvre
     private $numeroOpus = '0';
 
     /**
-     * @var \TypeMorceaux
+     * @var TypeMorceaux
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\TypeMorceaux")
      * @ORM\JoinColumns({
@@ -232,11 +232,11 @@ class Oeuvre
     /**
      * Set type
      *
-     * @param \TypeMorceaux $type
+     * @param TypeMorceaux $type
      *
      * @return Oeuvre
      */
-    public function setType(\TypeMorceaux $type = null)
+    public function setType($type)
     {
         $this->type = $type;
 
@@ -246,7 +246,7 @@ class Oeuvre
     /**
      * Get type
      *
-     * @return \TypeMorceaux
+     * @return TypeMorceaux
      */
     public function getType()
     {

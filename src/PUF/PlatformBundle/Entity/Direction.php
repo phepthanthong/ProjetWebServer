@@ -23,7 +23,7 @@ class Direction
     private $codeDirection;
 
     /**
-     * @var \Orchestres
+     * @var Orchestres
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Orchestres")
      * @ORM\JoinColumns({
@@ -33,7 +33,7 @@ class Direction
     private $orchestre;
 
     /**
-     * @var \Musicien
+     * @var Musicien
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Musicien")
      * @ORM\JoinColumns({
@@ -43,7 +43,7 @@ class Direction
     private $musicien;
 
     /**
-     * @var \Enregistrement
+     * @var Enregistrement
      *
      * @ORM\ManyToOne(targetEntity="PUF\PlatformBundle\Entity\Enregistrement")
      * @ORM\JoinColumns({
@@ -66,11 +66,11 @@ class Direction
     /**
      * Set orchestre
      *
-     * @param \Orchestres $orchestre
+     * @param Orchestres $orchestre
      *
      * @return Direction
      */
-    public function setOrchestre(\Orchestres $orchestre = null)
+    public function setOrchestre($orchestre)
     {
         $this->orchestre = $orchestre;
 
@@ -80,7 +80,7 @@ class Direction
     /**
      * Get orchestre
      *
-     * @return \Orchestres
+     * @return Orchestres
      */
     public function getOrchestre()
     {
@@ -90,11 +90,11 @@ class Direction
     /**
      * Set musicien
      *
-     * @param \Musicien $musicien
+     * @param Musicien $musicien
      *
      * @return Direction
      */
-    public function setMusicien(\Musicien $musicien = null)
+    public function setMusicien($musicien)
     {
         $this->musicien = $musicien;
 
@@ -104,7 +104,7 @@ class Direction
     /**
      * Get musicien
      *
-     * @return \Musicien
+     * @return Musicien
      */
     public function getMusicien()
     {
@@ -114,11 +114,11 @@ class Direction
     /**
      * Set enregistrement
      *
-     * @param \Enregistrement $enregistrement
+     * @param Enregistrement $enregistrement
      *
      * @return Direction
      */
-    public function setEnregistrement(\Enregistrement $enregistrement = null)
+    public function setEnregistrement($enregistrement)
     {
         $this->enregistrement = $enregistrement;
 
@@ -128,7 +128,7 @@ class Direction
     /**
      * Get enregistrement
      *
-     * @return \Enregistrement
+     * @return Enregistrement
      */
     public function getEnregistrement()
     {
