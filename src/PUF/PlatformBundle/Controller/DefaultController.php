@@ -4,6 +4,7 @@ namespace PUF\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use PUF\PlatformBundle\Entity;
+use PUF\PlatformBundle\Entity\Abonne;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -55,10 +56,10 @@ class DefaultController extends Controller
         }
     }
 
-    public function signupSuccessAction()
+    public function signupAction()
     {
         $post = Request::createFromGlobals();
-        if ($post->request->has('submit')) {
+        if ($post->request->has('btn_signup')) {
             $username = $post->request->get("InputLogin");
             $password = $post->request->get("InputPassword");
             $nom = $post->request->get("InputNom");
@@ -70,16 +71,12 @@ class DefaultController extends Controller
             $newuser->setPassword($password);
             $em = $this->getDoctrine()->getManager();
             $em->persist($newuser);
-            $em->flush();
-            return new Response('Bienvenue '.$newuser->getNomAbonne() .' sur notre page !' );
-        } else {
-            return new Response('Error' );
+            $em->flush();        
         }
-        
-        /*return $this->render('PUFPlatformBundle:Default:signup_success.html.twig');*/
-        /* eturn new Response('Bienvenue '.$product->getNomAbonne() .' sur notre page !' );*/
+        return $this->render('PUFPlatformBundle:Default:signup.html.twig');
+       
     }
-    
+
     public function chercherAlbumAction($albumId, Request $rq)
     {   
         $session = $rq->getSession();
@@ -108,10 +105,7 @@ class DefaultController extends Controller
             }
             return $this->render('PUFPlatformBundle:Default:chercherAlbum.html.twig', array('query'=>$liste));
         }
-        else {
-
-            
-
+        else {    
 
             $em = $this->getDoctrine()->getManager();
             $res = $em->createQuery("SELECT en.codeEnregistrement, en.nomDeFichier, en.duree, en.dureeSeconde, en.prix, en.extrait 
@@ -119,7 +113,11 @@ class DefaultController extends Controller
                 PUFPlatformBundle:Disque d, PUFPlatformBundle:CompositionDisque c, PUFPlatformBundle:Enregistrement en 
                 WHERE a.genre = g.codeGenre AND a.editeur = e.codeEditeur AND a.codeAlbum = d.album AND
                 d.codeDisque = c.disque AND c.enregistrement = en.codeEnregistrement
-                AND a.codeAlbum LIKE '$albumId'");//->getResult();
+                AND a.codeAlbum LIKE '$albumId'
+                AND (en.nomDeFichier LIKE '%$val%' OR
+                     en.duree LIKE '%$val%' OR
+                     en.dureeSeconde LIKE '%$val%' OR
+                     en.prix LIKE '%$val%')s");//->getResult();
 
             $liste = $res->getResult();
 
@@ -138,6 +136,16 @@ class DefaultController extends Controller
 
             //------------------------------------
 
+            $sp = $em->createQuery("SELECT en.codeEnregistrement FROM PUFPlatformBundle:Album a, PUFPlatformBundle:Genre g, PUFPlatformBundle:Editeur e,
+                PUFPlatformBundle:Disque d, PUFPlatformBundle:CompositionDisque c, PUFPlatformBundle:Enregistrement en 
+                WHERE a.genre = g.codeGenre AND a.editeur = e.codeEditeur AND a.codeAlbum = d.album AND
+                d.codeDisque = c.disque AND c.enregistrement = en.codeEnregistrement
+                AND a.codeAlbum LIKE '$albumId'");
+            $length = $sp->getResult();
+            $num = count($length);
+            var_dump($num);
+            // for(int i=0; i<'$num'; i++) {
+            // }
             // $buy = $post->request->get('codeBuy');
             // $sup = $em->createQuery("SELECT a.codeAbonne FROM PUFPlatformBundle:Abonne a
             //     WHERE a.prenomAbonne = '$username'");
@@ -265,12 +273,6 @@ class DefaultController extends Controller
     
 
         $liste = $res->getResult();
-
-        // $res2 = $em->createQuery("INSERT INTO PUFPlatformBundle:Achat (enregistrement, abonne) values ('$enregistrement', '1')");
-        // // $req2 = $em->createQuery("SELECT en.nomDeFichier, en.duree, en.dureeSeconde, en.prix 
-        // //     FROM PUFPlatformBundle:Enregistrement WHERE en.codeEnregistrement = '$enregistrement'");
-
-        // $liste2 = $req2->getResult();
 
         return $this->render('PUFPlatformBundle:Default:panier.html.twig', array('query'=>$liste));
     }
