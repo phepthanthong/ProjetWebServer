@@ -93,7 +93,7 @@ class XmlUtils
                 if (empty($messages)) {
                     $messages = array(sprintf('The XML file "%s" is not valid.', $file));
                 }
-                throw new \InvalidArgumentException(implode("\n", $messages), 0, $e);
+                //throw new \InvalidArgumentException(implode("\n", $messages), 0, $e);
             }
         }
 
